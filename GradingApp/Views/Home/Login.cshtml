@@ -1,0 +1,38 @@
+﻿@model LoginModel
+@{
+}
+
+<!-- Stylesheet connection for Login page -->
+@section Styles {
+    <link rel="stylesheet" href="~/css/LoginStyle.css" />
+}
+
+<div class="page">
+    
+    <div class="left-container">  
+        <div class="form">
+            <form asp-controller="Home" asp-action="Login" method="post" class="sign-in-form">
+                <h2 class="title">Log in</h2>
+                <h4 class="subtitle">Welcome back! Please enter your details.</h4>
+                <!-- Username field -->
+                <div class="inputs">
+                    <img src="@Url.Content("~/images/user.png")" alt="User" class="icons">
+                    <input type="text" placeholder="Username" asp-for="Username" />
+                </div>
+                <!-- Password field -->
+                <div class="inputs">
+                    <img src="@Url.Content("~/images/lock.png")" alt="Lock" class="icons">
+                    <input type="password" placeholder="Password" asp-for="Password"/>
+                </div>
+                <!-- Submit button -->
+                <input type="submit" class="btn solid" value="Login"/>
+            </form>
+        </div>
+    </div>
+    <div class="right-container">
+        <img src="@Url.Content("~/images/login.png")" alt="image" class="main_image" />
+
+    </div>
+   
+</div>
+
