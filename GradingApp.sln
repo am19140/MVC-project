@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradingApp", "GradingApp\GradingApp.csproj", "{89FC287F-ED2F-4456-A136-3B0F6AB57C2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GradingApp", "GradingApp\GradingApp.csproj", "{89FC287F-ED2F-4456-A136-3B0F6AB57C2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

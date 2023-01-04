@@ -26,6 +26,14 @@ namespace GradingApp.Controllers
         {
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Login(LoginModel model)
+        {
+            string username = model.Username;
+            string password = model.Password;
+            return View("~/Views/Home/Homepage.cshtml", model);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Homepage";
+}
+@section Styles{
+    <link rel="stylesheet" href="~/css/NavigationMenuStyle.css" />
+
+}
+
+<section>
+    <div class="page">
+        <!--MENU-->
+        <div class="navigation_bar">
+            <picture>
+
+
+            </picture>
+            <div class="menu">
+                <div class="menu" id="bmenu">
+
+                    <a class="link" asp-controller="Student" asp-action="Meeting" asp-route-username="@Model">Student</a>
+                    <a class="link" asp-controller="Student" asp-route-username="@Model" asp-action="Upload">Professor</a>
+                    <a class="link" asp-controller="Student" asp-route-username="@Model" asp-action="ThesisStatus">Secretariat</a>
+                    <a class="link" asp-controller="Home" asp-action="Login">Logout</a>
+                </div>
+                <div class="burger">
+                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                        <i class="fa fa-bars fa-xxl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container">
+
+            </div>
+        </div>
+    </div>
+    
+
+
+</section>
