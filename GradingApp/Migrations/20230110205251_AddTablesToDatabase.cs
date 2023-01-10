@@ -132,7 +132,7 @@ namespace GradingApp.Migrations
                         column: x => x.registrationNumber,
                         principalTable: "Students",
                         principalColumn: "registressionNumber",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(

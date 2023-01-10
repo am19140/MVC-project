@@ -16,6 +16,7 @@ namespace GradingApp.Models
         public string department { get; set; }
 
         [ForeignKey("Users")]
+        [Required]
         public string username { get; set; }
         public virtual Users Users { get; set; }
     }

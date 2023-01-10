@@ -15,6 +15,7 @@ namespace GradingApp.Models
         public int courseSemester { get; set; }
 
         [ForeignKey("Professors")]
+        [Required]
         public int afm { get; set; }
         public virtual Professors Professors { get; set; }
     }

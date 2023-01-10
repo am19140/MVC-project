@@ -9,13 +9,16 @@ namespace GradingApp.Models
     public class CourseHasStudents
     {
         [ForeignKey("Course")]
+        [Required]
         public int idCourse { get; set; }
         public virtual Course Course { get; set; }
 
         [ForeignKey("Students")]
+        [Required]
         public int registrationNumber { get; set; }
         public virtual Students Students { get; set; }
 
+        [Required]
         public int grade { get; set; } 
     }
 }
