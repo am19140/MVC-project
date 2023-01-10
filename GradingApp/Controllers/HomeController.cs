@@ -32,7 +32,7 @@ namespace GradingApp.Controllers
         {
             string username = model.Username;
             string password = model.Password;
-            return View("~/Views/Home/Homepage.cshtml", model);
+            return View("~/Views/Home/StudentHomepage.cshtml", model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

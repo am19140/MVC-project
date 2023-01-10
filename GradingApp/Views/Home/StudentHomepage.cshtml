@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewData["Title"] = "StudentHomepage";
+
+}
+@section Styles{
+    <link rel="stylesheet" href="~/css/StudentMenuStyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}
+
+
+<section>
+    <!--Section of the whole page-->
+    <div class="page">
+
+        <!--Section of the side navigation menu-->
+        <div class="sidenav">
+
+            <!--Section of image-->
+            <div class="profile_image">
+                <picture>
+                    <img src="@Url.Content("~/images/student_symbol.png")" alt="User" class="icons">
+                </picture>
+            </div>
+
+            <!--Section of menu's options-->
+            <div class="options">
+                <a href="#about">Homepage</a>
+                <button class="dropdown-btn">
+                    My Grades
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a href="#">My Card</a>
+                    <a href="#">Grades per semester</a>
+                    <a href="#">Overview</a>
+                </div>
+                <a href="#about">Profile</a>
+                <a class="link" asp-controller="Home" asp-action="Login">Logout</a>
+            </div>
+
+        </div>
+        <div class="main_content">
+            <h2 class="title">Student Homepage</h2>
+        </div>
+    </div>
+
+
+
+    <script>
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+
+
+
+
+    <!--
+    <div class="page">
+        
+    <div class="navigation_bar">
+        <picture>
+            <img src="@Url.Content("~/images/student.png")" alt="User" class="icons">
+
+        </picture>
+        <div class="menu">
+            <div class="menu" id="bmenu">
+
+                <a class="link" href="#">Homepage</a>
+                <button class="dropdown">My Grades           <i class="fa fa-caret-down"></i></button>
+                <div class="sub-menu">
+                    <a class="link" asp-controller="Student" asp-route-username="@Model" asp-action="Upload">My card</a>
+                    <a class="link" asp-controller="Student" asp-route-username="@Model" asp-action="ThesisStatus">Per Semester</a>
+                    <a class="link" asp-controller="Student" asp-route-username="@Model" asp-action="ThesisStatus">Final Grade</a>
+
+                </div>
+                <a class="link" asp-controller="Home" asp-action="Login">Logout</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+        </div>
+    </div>
+    </div>
+    -->
+ 
+
+
+
+</section>
