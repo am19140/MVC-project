@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GradingApp.Models
 {
-    public class Professors
+    public class Secretaries
     {
         [Key]
-        public int afm { get; set; }
+        public int phoneNumber { get; set; }
 
         [Required]
         public string name { get; set; }

@@ -1,12 +1,16 @@
-﻿namespace GradingApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GradingApp.Models
 {
     public class Users
     {
+        [Key]
         public string username { get; set; }
+
+        [Required]
         public string password { get; set; }
-        public string name { get; set; }
-        public string surname { get; set; }
-        public string department { get; set; }
+        
+        [Required]
         public string role { get; set; }
     }
 }

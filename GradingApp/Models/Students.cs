@@ -3,17 +3,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GradingApp.Models
 {
-    public class Professors
+    public class Students
     {
         [Key]
-        public int afm { get; set; }
+        public int registressionNumber { get; set; }
 
         [Required]
         public string name { get; set; }
-
         [Required]
         public string surname { get; set; }
-
         [Required]
         public string department { get; set; }
 
