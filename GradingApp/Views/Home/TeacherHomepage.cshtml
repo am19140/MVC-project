@@ -1,14 +1,12 @@
-﻿
-@{
-    ViewData["Title"] = "StudentHomepage";
+﻿@{
+    ViewData["Title"] = "TeacherHomepage";
 
 }
 @section Styles{
-    <link rel="stylesheet" href="~/css/MenuStyle.css" />
-    <link rel="stylesheet" href="~/css/StudentHomepageStyle.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="~/css/MenuStyle.css" />
+        <link rel="stylesheet" href="~/css/TeacherHomepageStyle.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 }
-
 
 <section>
     <!--Section of the whole page-->
@@ -20,7 +18,7 @@
             <!--Section of image-->
             <div class="profile_image">
                 <picture>
-                    <img src="@Url.Content("~/images/teacher_symbol.png")" alt="User" class="icons">
+                    <img src="@Url.Content("~/images/student_symbol.png")" alt="User" class="icons">
                 </picture>
             </div>
 
@@ -28,18 +26,18 @@
             <div class="options">
                 <a href="#about">
                     <img src="@Url.Content("~/images/home.png")" alt="User" class="icons">
-                    Homepage</a>
-                    <button class="dropdown-btn">
+                    Homepage
+                </a>
+                <button class="dropdown-btn">
                     <img src="@Url.Content("~/images/grade.png")" alt="User" class="icons">
-                    My Grades
+                    My Grading
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <a href="#"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">My Card</a>
-                    <a href="#"><img src="@Url.Content("~/images/semester.png")" alt="User" class="icons">Grades per semester</a>
-                    <a href="#"><img src="@Url.Content("~/images/sum.png")" alt="User" class="icons">Overview</a>
+                    <a href="#"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">Graded Courses</a>
+                    <a href="#"><img src="@Url.Content("~/images/semester.png")" alt="User" class="icons">Submit grades</a>
+
                 </div>
-                
                 <a href="#about">
                     <img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">
                     Profile
@@ -48,7 +46,7 @@
                     <img src="@Url.Content("~/images/logout.png")" alt="User" class="icons">Logout
                 </a>
             </div>
-             
+
         </div>
 
 
@@ -57,37 +55,39 @@
             <div class="upper_container">
 
                 <div class="upper_container_left">
-                    <img src="@Url.Content("~/images/boy.png")" alt="User" class="icons">
-
+                    <h2 class="title">Submit grades faster!</h2>
+                    <div class="subtitle">
+                        The easiest way to submit grades for all your courses and review grades classes!
+                    </div>
                 </div>
                 <div class="upper_container_right">
-                    <h2 class="title">Don't stress about your grades!</h2>
-                    <div class="subtitle">You can now check your grades, compare your semesters and get 
-                        access to your average score!</div>
+                    <img src="@Url.Content("~/images/woman.png")" alt="User" class="icons">
+
+                    
                 </div>
             </div>
             <div class="down_container">
                 <!--Section of card explaining-->
                 <div class="option">
                     <picture>
-                        <img src="@Url.Content("~/images/card_logo.png")" alt="User" class="icons">                        
+                        <img src="@Url.Content("~/images/card_logo.png")" alt="User" class="icons">
                     </picture>
                     <div class="option_text">
-                        <h3>Your grading card contains the following for each course:</h3>
+                        <h3>Every graded course contains:</h3>
                         <div class="contains">
                             <img src="@Url.Content("~/images/tick.png")" alt="User" class="icons">
                             Final grade
                         </div>
                         <div class="contains">
                             <img src="@Url.Content("~/images/tick.png")" alt="User" class="icons">
-                            Semester 
+                            Semester
                         </div>
                         <div class="contains">
                             <img src="@Url.Content("~/images/tick.png")" alt="User" class="icons">
-                            Professor's name
+                            Student's name
                         </div>
                         <div class="contains">
-                            <button class="redirct-btn">View my Card</button>
+                            <button class="redirct-btn">View my graded courses</button>
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                         <div class="contains">
                             <button class="redirct-btn">View my grades per semester</button>
                         </div>
-                        
+
                     </div>
                 </div>
                 <!--Section of explaining total grade-->
@@ -145,43 +145,3 @@
             });
         }
     </script>
-
-
-
-
-
-    <!--
-    <div class="page">
-        
-    <div class="navigation_bar">
-        <picture>
-            <img src="@Url.Content("~/images/student.png")" alt="User" class="icons">
-
-        </picture>
-        <div class="menu">
-            <div class="menu" id="bmenu">
-
-                <a class="link" href="#">Homepage</a>
-                <button class="dropdown">My Grades           <i class="fa fa-caret-down"></i></button>
-                <div class="sub-menu">
-                    <a class="link" asp-controller="Student" asp-route-username="@Model" asp-action="Upload">My card</a>
-                    <a class="link" asp-controller="Student" asp-route-username="@Model" asp-action="ThesisStatus">Per Semester</a>
-                    <a class="link" asp-controller="Student" asp-route-username="@Model" asp-action="ThesisStatus">Final Grade</a>
-
-                </div>
-                <a class="link" asp-controller="Home" asp-action="Login">Logout</a>
-            </div>
-
-        </div>
-    </div>
-    <div class="content">
-        <div class="container">
-        </div>
-    </div>
-    </div>
-    -->
- 
-
-
-
-</section>
