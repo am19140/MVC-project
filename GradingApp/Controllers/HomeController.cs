@@ -1,4 +1,5 @@
-﻿using GradingApp.Models;
+﻿using GradingApp.Data;
+using GradingApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,10 +8,14 @@ namespace GradingApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDBContext _db;
+        string error;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDBContext db)
         {
             _logger = logger;
+            _db = db;
+            error = "";
         }
 
         public IActionResult Index()
@@ -32,7 +37,28 @@ namespace GradingApp.Controllers
         {
             string username = model.Username;
             string password = model.Password;
-            return View("~/Views/Home/StudentHomepage.cshtml", model);
+            
+            List<Users> usersList = _db.Users.ToList();
+            
+            foreach (Users u in usersList)
+            {
+                if (u.username == username && u.password == password)
+                {
+                    ViewBag.Username = model.Username;
+                    switch (u.role)
+                    {
+                        case "secretary":
+                            return View("~/Views/Home/SecretaryHomepage.cshtml", model);
+                        case "professor":
+                            return View("~/Views/Home/TeacherHomepage.cshtml", model);
+                        case "student":
+                            return View("~/Views/Home/StudentHomepage.cshtml", model);
+                        default:
+                            return RedirectToAction("Error");
+                    }
+                }
+            }
+            return RedirectToAction("Error");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
