@@ -18,13 +18,13 @@
             <!--Section of image-->
             <div class="profile_image">
                 <picture>
-                    <img src="@Url.Content("~/images/student_symbol.png")" alt="User" class="icons">
+                    <img src="@Url.Content("~/images/teacher_symbol.png")" alt="User" class="icons">
                 </picture>
             </div>
 
             <!--Section of menu's options-->
             <div class="options">
-                <a href="#about">
+                <a href="#">
                     <img src="@Url.Content("~/images/home.png")" alt="User" class="icons">
                     Homepage
                 </a>
@@ -35,7 +35,7 @@
                 </button>
                 <div class="dropdown-container">
                     <a href="#"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">Graded Courses</a>
-                    <a href="#"><img src="@Url.Content("~/images/semester.png")" alt="User" class="icons">Submit grades</a>
+                    <a href="#"><img src="@Url.Content("~/images/pending.png")" alt="User" class="icons">Submit grades</a>
 
                 </div>
                 <a href="#about">
@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="down_container">
-                <!--Section of card explaining-->
+                <!--Section of graded courses-->
                 <div class="option">
                     <picture>
                         <img src="@Url.Content("~/images/card_logo.png")" alt="User" class="icons">
@@ -91,18 +91,18 @@
                         </div>
                     </div>
                 </div>
-                <!--Section of explaining grades per semeseter-->
+                <!--Section for new grades submission-->
                 <div class="option">
                     <picture>
-                        <img src="@Url.Content("~/images/statistics_logo.png")" alt="User" class="icons">
+                        <img src="@Url.Content("~/images/pending_logo.png")" alt="User" class="icons">
                     </picture>
                     <div class="option_text">
-                        <h3>Track your progress per  every  semester</h3>
+                        <h3><p>Some exams are <b>pending</b> to be graded...</p></h3>
                         <div class="contains_img">
-                            <img src="@Url.Content("~/images/statistics.png")" alt="User" class="icons">
+                            <img src="@Url.Content("~/images/grades.png")" alt="User" class="icons">
                         </div>
                         <div class="contains">
-                            <button class="redirct-btn">View my grades per semester</button>
+                            <button class="redirct-btn">View my courses</button>
                         </div>
 
                     </div>
@@ -110,16 +110,14 @@
                 <!--Section of explaining total grade-->
                 <div class="option">
                     <picture>
-                        <img src="@Url.Content("~/images/calc_logo.png")" alt="User" class="icons">
+                        <img src="@Url.Content("~/images/smile_logo.png")" alt="User" class="icons">
                     </picture>
                     <div class="option_text">
-                        <h3>Calculating your final score automatically</h3>
-                        <div class="contains_img">
-                            <img src="@Url.Content("~/images/final.png")" alt="User" class="icons">
-                        </div>
-                        <div class="contains">
-                            <button class="redirct-btn">View my final Grade</button>
-                        </div>
+                        <h2>Grading becomes easy with Grading App.</h2>
+
+                        <h1>89%</h1>
+                        <h2>    of the professors answered positively<br /> about the convinience of the app</h2>
+                        <h4>Do you have a complain? <br> Email us to:gradingapp@info.gr</h4>
                     </div>
                 </div>
 
@@ -145,3 +143,4 @@
             });
         }
     </script>
+    </section>
