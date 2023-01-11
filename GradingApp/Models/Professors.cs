@@ -6,6 +6,7 @@ namespace GradingApp.Models
     public class Professors
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int afm { get; set; }
 
         [Required]

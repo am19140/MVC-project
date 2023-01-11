@@ -6,6 +6,7 @@ namespace GradingApp.Models
     public class Secretaries
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int phoneNumber { get; set; }
 
         [Required]

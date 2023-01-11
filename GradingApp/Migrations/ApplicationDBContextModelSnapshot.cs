@@ -67,10 +67,7 @@ namespace GradingApp.Migrations
             modelBuilder.Entity("GradingApp.Models.Professors", b =>
                 {
                     b.Property<int>("afm")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("afm"));
 
                     b.Property<string>("department")
                         .IsRequired()
@@ -98,10 +95,7 @@ namespace GradingApp.Migrations
             modelBuilder.Entity("GradingApp.Models.Secretaries", b =>
                 {
                     b.Property<int>("phoneNumber")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("phoneNumber"));
 
                     b.Property<string>("department")
                         .IsRequired()
@@ -129,10 +123,7 @@ namespace GradingApp.Migrations
             modelBuilder.Entity("GradingApp.Models.Students", b =>
                 {
                     b.Property<int>("registressionNumber")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("registressionNumber"));
 
                     b.Property<string>("department")
                         .IsRequired()

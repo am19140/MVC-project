@@ -6,6 +6,7 @@ namespace GradingApp.Models
     public class Students
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int registressionNumber { get; set; }
 
         [Required]

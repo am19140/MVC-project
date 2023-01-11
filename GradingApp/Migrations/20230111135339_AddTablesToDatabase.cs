@@ -27,8 +27,7 @@ namespace GradingApp.Migrations
                 name: "Professors",
                 columns: table => new
                 {
-                    afm = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    afm = table.Column<int>(type: "int", nullable: false),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     department = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -49,8 +48,7 @@ namespace GradingApp.Migrations
                 name: "Secretaries",
                 columns: table => new
                 {
-                    phoneNumber = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    phoneNumber = table.Column<int>(type: "int", nullable: false),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     department = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -71,8 +69,7 @@ namespace GradingApp.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    registressionNumber = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    registressionNumber = table.Column<int>(type: "int", nullable: false),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     department = table.Column<string>(type: "nvarchar(max)", nullable: false),
