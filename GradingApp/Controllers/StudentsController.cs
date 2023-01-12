@@ -18,12 +18,18 @@ namespace GradingApp.Controllers
 
         public IActionResult GradesSubject(string Username)
         {
+            ViewBag.Course = _db.Course.ToList();
+            ViewBag.Students = _db.Students.ToList();
+            ViewBag.CourseHasStudents = _db.CourseHasStudents.ToList();
             ViewBag.Username = Username;
             return View("GradesSubject");
         }
 
         public IActionResult GradesSemester(string Username)
         {
+            ViewBag.Course = _db.Course.ToList();
+            ViewBag.Students = _db.Students.ToList();
+            ViewBag.CourseHasStudents = _db.CourseHasStudents.ToList();
             ViewBag.Username = Username;
             return View("GradesSemester");
         }

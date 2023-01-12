@@ -3,6 +3,33 @@
 }
 
 <h1>My Card</h1>
+<p>
+@{ var sum = 0; 
+var ptotal = 0; 
+var ftotal = 0; 
+@foreach (CourseHasStudents chs in ViewBag.CourseHasStudents)
+{
+    @if (@chs.Students.username == @ViewBag.Username)
+    {
+        @if (@chs.grade >= 5)
+        {
+            sum = sum + chs.grade;
+            ptotal++;
+        }
+        @if (@chs.grade <= 5)
+        {
+            ftotal++;
+        }
+                
+    }
+        }
+        
+    }
+</p>
+<h2>Course Summary</h2>
+<h3>Number of Passed Courses: @ptotal</h3>
+<h3>Number of Failed Courses: @ftotal</h3>
+<h3>Grade Point Average: @sum</h3>
 
 <table class="table table-bordered table-stripped" style="width:60%">
     <thead>
@@ -16,12 +43,16 @@
             <th>
                 Grade
             </th>
+            <th>
+                Passed
+            </th>
         </tr>
     </thead>
     <tbody>
+        
         @foreach (CourseHasStudents chs in ViewBag.CourseHasStudents)
         {
-            @if (@chs.Students.username == ViewBag.Username)
+            @if (@chs.Students.username == @ViewBag.Username)
             {
                 <tr>
                     <td width="60%">
@@ -33,7 +64,14 @@
                     <td width="20%" align="center">
                         @chs.grade
                     </td>
+                    <td align="center">
+                        @if (@chs.grade >= 5)
+                        {
+                            <p>✔️</p>
+                        }
+                    </td>
                 </tr>
+                
             }
             
         }
