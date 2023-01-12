@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "MyCard";
+}
+
+<h1>My Card</h1>
+
+<table class="table table-bordered table-stripped" style="width:60%">
+    <thead>
+        <tr>
+            <th>
+                Subject
+            </th>
+            <th>
+                Semester
+            </th>
+            <th>
+                Grade
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (CourseHasStudents chs in ViewBag.CourseHasStudents)
+        {
+            @if (@chs.Students.username == ViewBag.Username)
+            {
+                <tr>
+                    <td width="60%">
+                        @chs.Course.courseTitle
+                    </td>
+                    <td width="20%" align="center">
+                        @chs.Course.courseSemester
+                    </td>
+                    <td width="20%" align="center">
+                        @chs.grade
+                    </td>
+                </tr>
+            }
+            
+        }
+    </tbody>
+</table>
