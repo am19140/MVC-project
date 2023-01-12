@@ -48,11 +48,11 @@ namespace GradingApp.Controllers
                     switch (u.role)
                     {
                         case "secretary":
-                            return View("~/Views/Home/SecretaryHomepage.cshtml", model);
+                            return View("~/Views/Secretaries/SecretaryHomepage.cshtml", model);
                         case "professor":
-                            return View("~/Views/Home/TeacherHomepage.cshtml", model);
+                            return View("~/Views/Professors/TeacherHomepage.cshtml", model);
                         case "student":
-                            return View("~/Views/Home/StudentHomepage.cshtml", model);
+                            return View("~/Views/Students/StudentHomepage.cshtml", model);
                         default:
                             return RedirectToAction("Error");
                     }

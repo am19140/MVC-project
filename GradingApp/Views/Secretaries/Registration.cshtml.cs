@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace GradingApp.Views.Home
+namespace GradingApp.Views.Secretaries
 {
-    public class SecretaryHomepageModel : PageModel
+    public class RegistrationModel : PageModel
     {
         public void OnGet()
         {

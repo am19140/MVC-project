@@ -8,5 +8,11 @@ namespace GradingApp.Controllers
         {
             return View();
         }
+
+        public IActionResult Registration(string Username)
+        {
+            ViewBag.Username = Username;
+            return View("Registration");
+        }
     }
 }
