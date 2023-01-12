@@ -24,5 +24,9 @@ namespace GradingApp.Controllers
             ViewBag.Username = Username;
             return View("AllCourses");
         }
+
+        public IActionResult Register() {
+            return View();
+        }
     }
 }

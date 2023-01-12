@@ -36,12 +36,86 @@
                 </button>
                 <div class="dropdown-container">
                     <a href="#"><img src="@Url.Content("~/images/register.png")" alt="User" class="icons">Register</a>
-                    <a asp-controller ="Secretaries" asp-action="AssignCourse" asp-route-username="@Model.Username"><img src="@Url.Content("~/images/assign.png")" alt="User" class="icons">Assign Course</a>
+                    <a asp-controller ="Secretaries" asp-action="AssignCourse" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/assign.png")" alt="User" class="icons">Assign Course</a>
+                </div>
+                <button class="dropdown-btn">
+                    <img src="@Url.Content("~/images/teacher.png")" alt="User" class="icons">
+                    Teacher
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a asp-controller="Secretaries" asp-action="Registration" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/register.png")" alt="User" class="icons">Register</a>
+                    <a asp-controller="Secretaries" asp-action="AssignCourse" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/assign.png")" alt="User" class="icons">Asign Course</a>
                 </div>
 
-            </div>
+                <button class="dropdown-btn">
+                    <img src="@Url.Content("~/images/courses.png")" alt="User" class="icons">
+                    Courses
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a asp-controller="Secretaries" asp-action="Registration" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/add_course.png")" alt="User" class="icons">Register</a>
+                    <a asp-controller="Secretaries" asp-action="AllCourses" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/grade.png")" alt="User" class="icons">Overview</a>
 
+                </div>
+
+                <a href="#about">
+                    <img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">
+                    Profile
+                </a>
+                <a class="logout" asp-controller="Home" asp-action="Login">
+                    <img src="@Url.Content("~/images/logout.png")" alt="User" class="icons">Logout
+                </a>
             </div>
+        </div>
+
+        <div class="main_content">
+            
+            <div class="form">
+                <h2>Registration Form</h2>
+                <form asp-controller="Secretaries" asp-action="Register" asp-route-proffesorName="@ViewBag.Username">
+                    <!--First Name-->
+                <div class="form-group">
+                        <label class="control-label"></label>
+                        <input class="form-control" placeholder="First Name" />
+                    <span  class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
+                </div>
+                    <!--Last Name Name-->
+                    <div class="form-group">
+                        <label class="control-label"></label>
+                        <input class="form-control" placeholder="Last Name" />
+                        <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
+                    </div>
+                    <!--Department-->
+                    <div class="form-group">
+                        <label class="control-label"></label>
+                        <input class="form-control" placeholder="Department" />
+                        <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
+                    </div>
+                    <!--Username-->
+                    <div class="form-group">
+                        <label class="control-label"></label>
+                        <input class="form-control" placeholder="Username" />
+                        <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
+                    </div>
+                    <!--Password-->
+                    <div class="form-group">
+                        <label class="control-label"></label>
+                        <input class="form-control" placeholder="Password" />
+                        <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
+                    </div>
+                    <!--Code-->
+                    <div class="form-group">
+                        <label class="control-label"></label>
+                        <input class="form-control" placeholder="Type registration number for students and AFM for Professors" />
+                        <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
+                    </div>
+                    <input type="submit" value="Add" class="btn btn-primary" />
+
+                </form> 
+            </div>
+        </div>
+
     </div>
         <script>
             var dropdown = document.getElementsByClassName("dropdown-btn");
