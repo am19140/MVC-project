@@ -6,13 +6,47 @@
 <h1>Grades Per Semester</h1>
 
 <form asp-controller="Students" asp-action="GradesSemester" method="get">
-    <p>
-
-        <select>
-            <option value="">All</option>
-        </select>
-    </p>
+    <select id="SemesterNum" name="SemesterNum" onchange='if(this.value != "") { this.form.submit(); }'>
+        <option value="" >All</option>
+        <option value="1">Semester 1</option>
+        <option value="2">Semester 2</option>
+        <option value="3">Semester 3</option>
+        <option value="4">Semester 4</option>
+    </select>
+    <input type="hidden" name="Username" value="@ViewBag.Username" />
 </form>
+@{
+    float sum = 0;
+    var ptotal = 0;
+    var ftotal = 0;
+    float avg = 0;
+    @foreach (CourseHasStudents chs in Model)
+    {
+        @if (@chs.Students.username == @ViewBag.Username)
+        {
+            @if (@chs.grade >= 5)
+            {
+                sum = sum + chs.grade;
+                ptotal++;
+            }
+            @if (@chs.grade < 5)
+            {
+                ftotal++;
+            }
+
+        }
+    }
+    @if (ptotal != 0)
+    {
+        avg = sum/ptotal;
+    }
+
+
+}
+<h3>Semester Summary</h3>
+<h4>Number of Passed Courses: @ptotal</h4>
+<h4>Number of Failed Courses: @ftotal</h4>
+<h4>Semester Average: @avg</h4>
 <table class="table table-bordered table-stripped" style="width:60%">
     <thead>
         <tr>
