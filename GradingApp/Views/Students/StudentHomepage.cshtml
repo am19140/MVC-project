@@ -34,9 +34,10 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <a asp-controller="Students" asp-action="GradesSubject" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">Per Subject</a>
-                    <a asp-controller="Students" asp-action="GradesSemester" asp-route-username="@ViewBag.Username">Per semester</a>
                     <a asp-controller="Students" asp-action="MyCard" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">My Card</a>
+                    <a asp-controller="Students" asp-action="GradesSemester" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/history.png")" alt="User" class="icons">Per semester</a>
+
+                    <a asp-controller="Students" asp-action="GradesSubject" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">Per Subject</a>
                 </div>
                 
                 <a href="#about">
