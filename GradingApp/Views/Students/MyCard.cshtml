@@ -1,83 +1,196 @@
 ﻿@{
     ViewData["Title"] = "MyCard";
 }
-
-<h1>My Card</h1>
-@{
-    float sum = 0;
-    var ptotal = 0;
-    var ftotal = 0;
-    float avg = 0; 
-@foreach (CourseHasStudents chs in ViewBag.CourseHasStudents)
-{
-    @if (@chs.Students.username == @ViewBag.Username)
-    {
-        @if (@chs.grade >= 5)
-        {
-            sum = sum + chs.grade;
-            ptotal++;
-        }
-        @if (@chs.grade < 5)
-        {
-            ftotal++;
-        }
-                
-    }
-        }
-    
-    @if (ptotal != 0)
-    {
-        avg = sum / ptotal;
-    }   
+@section Styles{
+    <link rel="stylesheet" href="~/css/MenuStyle.css" />
+    <link rel="stylesheet" href="~/css/CardStyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 }
-<h2>Course Summary</h2>
-<h3>Number of Passed Courses: @ptotal</h3>
-<h3>Number of Failed Courses: @ftotal</h3>
-<h3>Grade Point Average: @avg</h3>
 
-<table class="table table-bordered table-stripped" style="width:60%">
-    <thead>
-        <tr>
-            <th>
-                Subject
-            </th>
-            <th>
-                Semester
-            </th>
-            <th>
-                Grade
-            </th>
-            <th>
-                Passed
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        
+
+
+<section>
+    @{
+        float sum = 0;
+        var ptotal = 0;
+        var ftotal = 0;
+        float avg = 0;
         @foreach (CourseHasStudents chs in ViewBag.CourseHasStudents)
         {
             @if (@chs.Students.username == @ViewBag.Username)
             {
-                <tr>
-                    <td width="60%">
-                        @chs.Course.courseTitle
-                    </td>
-                    <td width="20%" align="center">
-                        @chs.Course.courseSemester
-                    </td>
-                    <td width="20%" align="center">
-                        @chs.grade
-                    </td>
-                    <td align="center">
-                        @if (@chs.grade >= 5)
-                        {
-                            <p>✔️</p>
-                        }
-                    </td>
-                </tr>
-                
+                @if (@chs.grade >= 5)
+                {
+                    sum = sum + chs.grade;
+                    ptotal++;
+                }
+                @if (@chs.grade < 5)
+                {
+                    ftotal++;
+                }
+
             }
-            
         }
-    </tbody>
-</table>
+
+        @if (ptotal != 0)
+        {
+            avg = sum / ptotal;
+        }
+    }
+    <div class="page">
+        <!--Section of the side navigation menu-->
+        <div class="sidenav">
+
+            <!--Section of image-->
+            <div class="profile_image">
+                <picture>
+                    <img src="@Url.Content("~/images/student_symbol.png")" alt="User" class="icons">
+                </picture>
+            </div>
+
+            <!--Section of menu's options-->
+            <div class="options">
+                <a href="#">
+                    <img src="@Url.Content("~/images/home.png")" alt="User" class="icons">
+                    Homepage
+                </a>
+                <button class="dropdown-btn">
+                    <img src="@Url.Content("~/images/grade.png")" alt="User" class="icons">
+                    My Grades
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a asp-controller="Students" asp-action="MyCard" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">My Card</a>
+                    <a asp-controller="Students" asp-action="GradesSemester" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/history.png")" alt="User" class="icons">Per semester</a>
+                    <a asp-controller="Students" asp-action="GradesSubject" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">Overview</a>
+                </div>
+
+                <a href="#about">
+                    <img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">
+                    Profile
+                </a>
+                <a class="logout" asp-controller="Home" asp-action="Login">
+                    <img src="@Url.Content("~/images/logout.png")" alt="User" class="icons">Logout
+                </a>
+            </div>
+
+        </div>
+        <!--END OF SIDE MENU-->
+
+        <!--MAIN CONTENT-->
+        <div class="main_content">
+
+            <div class="top-title">
+                @ViewBag.Username's Card
+            </div>
+
+            <!--SECTION OF STATISTICS-->
+            <div class="statistics">
+                <h2>Your academic overview</h2>
+                <div class="container">
+                    <div class="left">
+                        <table class="table table-bordered table-stripped">
+                            <tbody>
+                                <tr class="row">
+                                    <td class="title">Number of Passed Courses:</td>
+                                    <td class="passed">@ptotal</td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="title">Number of Failed Courses:</td>
+                                    <td class="failed">@ftotal</td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="title">Grade Point Average:</td>
+                                    <td class="results">@avg</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="right">
+                        <h1>@avg.0</h1>
+                    </div>
+                </div>
+
+
+               
+            </div>
+            <!--END OF STATISTICS-->
+
+            <!--SECTION OF GRADES-->
+            <div class="grades">
+                <h2>Courses</h2>
+
+                <table class="table table-bordered table-stripped" >
+                    <thead>
+                        <tr class="row">
+                            <th>Subject</th>
+                            <th>Semester</th>
+                            <th>Grade</th>
+                            <th>Passed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (CourseHasStudents chs in ViewBag.CourseHasStudents)
+                        {
+                            @if (@chs.Students.username == @ViewBag.Username)
+                            {
+                                <tr class="row">
+                                    <td class="title">
+                                        @chs.Course.courseTitle
+                                    </td>
+                                    <td  >
+                                        @chs.Course.courseSemester
+                                    </td>
+                                    <td  >
+                                        @chs.grade
+                                    </td>
+                                    <td >
+                                        @if (@chs.grade >= 5)
+                                        {
+                                            <img src="@Url.Content("~/images/tick_green.png")" alt="User" class="icons">
+                                        }
+                                    </td>
+                                </tr>
+
+                            }
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        
+
+        
+
+
+
+
+    </div>
+
+
+
+
+    <script>
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+</section>
+
