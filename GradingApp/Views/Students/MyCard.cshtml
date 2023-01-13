@@ -3,9 +3,11 @@
 }
 
 <h1>My Card</h1>
-@{ var sum = 0; 
-var ptotal = 0; 
-var ftotal = 0; 
+@{
+    float sum = 0;
+    var ptotal = 0;
+    var ftotal = 0;
+    float avg = 0; 
 @foreach (CourseHasStudents chs in ViewBag.CourseHasStudents)
 {
     @if (@chs.Students.username == @ViewBag.Username)
@@ -22,12 +24,16 @@ var ftotal = 0;
                 
     }
         }
-        
+    
+    @if (ptotal != 0)
+    {
+        avg = sum / ptotal;
+    }   
 }
 <h2>Course Summary</h2>
 <h3>Number of Passed Courses: @ptotal</h3>
 <h3>Number of Failed Courses: @ftotal</h3>
-<h3>Grade Point Average: @sum</h3>
+<h3>Grade Point Average: @avg</h3>
 
 <table class="table table-bordered table-stripped" style="width:60%">
     <thead>
