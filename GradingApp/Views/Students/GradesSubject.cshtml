@@ -1,0 +1,59 @@
+﻿@model List<GradingApp.Models.CourseHasStudents>
+@{
+    ViewData["Title"] = "GradesSubject";
+}
+
+<h1>Grades Per Suject</h1>
+<form asp-controller="Students" asp-action="GradesSubject" method="get">
+    <p>
+        Subject: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+        <input type="hidden" name="Username" value="@ViewBag.Username" />
+    </p>
+</form>
+<table class="table table-bordered table-stripped" style="width:60%">
+    <thead>
+        <tr>
+            <th>
+                Subject
+            </th>
+            <th>
+                Semester
+            </th>
+            <th>
+                Professor
+            </th>
+            <th>
+                Grade
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (CourseHasStudents chs in Model)
+        {
+            @if (@chs.Students.username == @ViewBag.Username)
+            {
+                        <tr>
+                            <td width="60%">
+                        @Html.DisplayFor(modelItem => chs.Course.courseTitle)
+                            </td>
+                            <td width="20%" align="center">
+                        @Html.DisplayFor(modelItem => chs.Course.courseSemester)
+                            </td>
+                                    <td width="20%" align="center">
+                        @Html.DisplayFor(modelItem => chs.Course.Professors.name) @Html.DisplayFor(modelItem => chs.Course.Professors.surname)
+                                    </td>
+                            <td width="20%" align="center">
+                        @Html.DisplayFor(modelItem => chs.grade)
+                            </td>
+                            
+                        </tr>
+
+            }
+
+        }
+    </tbody>
+</table>
+
+
