@@ -50,6 +50,10 @@ namespace GradingApp.Controllers
             if (!String.IsNullOrEmpty(SemesterNum))
             {
                 crs = crs.Where(s => s.Course.courseSemester.ToString() == SemesterNum);
+            } else
+            {
+                crs = from c in _db.CourseHasStudents
+                      select c;
             }
 
             return View(await crs.ToListAsync());
