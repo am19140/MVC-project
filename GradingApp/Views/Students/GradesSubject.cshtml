@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<GradingApp.Models.CourseHasStudents>
+@{
     ViewData["Title"] = "GradesSubject";
 }
 
@@ -7,6 +8,7 @@
     <p>
         Subject: <input type="text" name="SearchString" />
         <input type="submit" value="Filter" />
+        <input type="hidden" name="Username" value="@ViewBag.Username" />
     </p>
 </form>
 <table class="table table-bordered table-stripped" style="width:60%">
@@ -28,22 +30,22 @@
     </thead>
     <tbody>
 
-        @foreach (CourseHasStudents chs in ViewBag.CourseHasStudents)
+        @foreach (CourseHasStudents chs in Model)
         {
             @if (@chs.Students.username == @ViewBag.Username)
             {
                         <tr>
                             <td width="60%">
-                        @chs.Course.courseTitle
+                        @Html.DisplayFor(modelItem => chs.Course.courseTitle)
                             </td>
                             <td width="20%" align="center">
-                        @chs.Course.courseSemester
+                        @Html.DisplayFor(modelItem => chs.Course.courseSemester)
                             </td>
                                     <td width="20%" align="center">
-                        @chs.Course.Professors.name @chs.Course.Professors.surname
+                        @Html.DisplayFor(modelItem => chs.Course.Professors.name) @Html.DisplayFor(modelItem => chs.Course.Professors.surname)
                                     </td>
                             <td width="20%" align="center">
-                        @chs.grade
+                        @Html.DisplayFor(modelItem => chs.grade)
                             </td>
                             
                         </tr>
@@ -53,3 +55,5 @@
         }
     </tbody>
 </table>
+
+

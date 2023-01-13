@@ -24,12 +24,12 @@ namespace GradingApp.Controllers
                 return Problem("Entity set 'ApplicationDBContext.Course'  is null.");
             }
 
-            var crs = from c in _db.Course
+            var crs = from c in _db.CourseHasStudents
                          select c;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                crs = crs.Where(s => s.courseTitle!.Contains(searchString));
+                crs = crs.Where(s => s.Course.courseTitle!.Contains(searchString));
             }
 
             return View(await crs.ToListAsync());
@@ -40,8 +40,23 @@ namespace GradingApp.Controllers
         {
             ViewBag.Course = _db.Course.ToList();
             ViewBag.Students = _db.Students.ToList();
+            ViewBag.Professors = _db.Professors.ToList();
             ViewBag.CourseHasStudents = _db.CourseHasStudents.ToList();
             ViewBag.Username = Username;
+            if (_db.Course == null)
+            {
+                return Problem("Entity set 'ApplicationDBContext.Course'  is null.");
+            }
+
+            var crs = from c in _db.CourseHasStudents
+                      select c;
+
+            //if (!String.IsNullOrEmpty(searchString))
+            {
+            //    crs = crs.Where(s => s.Course.courseTitle!.Contains(searchString));
+            }
+
+            //return View(await crs.ToListAsync());
             return View("GradesSemester");
         }
 
