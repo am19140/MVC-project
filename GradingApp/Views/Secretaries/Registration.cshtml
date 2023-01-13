@@ -74,45 +74,102 @@
             <div class="form">
                 <h2>Registration Form</h2>
                 <form asp-controller="Secretaries" asp-action="Register" asp-route-proffesorName="@ViewBag.Username">
-                    <!--First Name-->
+                <h4>Add a new student or professor below:</h4>
+                <!--First Name-->
                 <div class="form-group">
-                        <label class="control-label"></label>
                         <input class="form-control" placeholder="First Name" />
                     <span  class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                 </div>
                     <!--Last Name Name-->
                     <div class="form-group">
-                        <label class="control-label"></label>
                         <input class="form-control" placeholder="Last Name" />
                         <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                     </div>
                     <!--Department-->
                     <div class="form-group">
-                        <label class="control-label"></label>
                         <input class="form-control" placeholder="Department" />
                         <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                     </div>
                     <!--Username-->
                     <div class="form-group">
-                        <label class="control-label"></label>
                         <input class="form-control" placeholder="Username" />
                         <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                     </div>
                     <!--Password-->
                     <div class="form-group">
-                        <label class="control-label"></label>
                         <input class="form-control" placeholder="Password" />
                         <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                     </div>
                     <!--Code-->
                     <div class="form-group">
-                        <label class="control-label"></label>
                         <input class="form-control" placeholder="Type registration number for students and AFM for Professors" />
                         <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
+                    </div>
+                    <div class="form-group">
+                        <div class="selection">
+                            <label class="container">
+                                Professors
+                                <input type="radio" checked="checked" name="radio" class="input">
+                                <span class="checkmark"></span>
+                            </label>
+
+                        </div>
+                        <div class="selection">
+                            <label class="container">
+                                Student
+                                <input type="radio" checked="checked" name="radio" class="input">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                       
+                        
                     </div>
                     <input type="submit" value="Add" class="btn btn-primary" />
 
                 </form> 
+            </div>
+            <!--RIGHT CONTAINER-->
+            <div class="right">
+                <div class="upper">
+                    <img src="@Url.Content("~/images/woman2.png")" alt="User" class="icons">
+
+                </div>
+                <div class="form1">
+
+                    <div class="inputs">
+                        <h2>Course Registration </h2>
+                        <form asp-controller="Secretaries" asp-action="Register" asp-route-proffesorName="@ViewBag.Username">
+                            <h4>Add new courses below:</h4>
+
+                            <!--Course ID-->
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Course ID" />
+                                <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
+                            </div>
+                            <!--Course title-->
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Course title" />
+                                <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
+                            </div>
+                            <!--Semester-->
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Semester of course" />
+                                <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
+                            </div>
+                            <!--AFM-->
+                            <div class="form-group">
+                                <input class="form-control" placeholder="AFM of Professor" />
+                                <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
+                            </div>
+
+                            <input type="submit" value="Add" class="btn btn-primary" />
+
+                        </form>
+
+                            </div>
+
+                    </div>
+                </div>
             </div>
         </div>
 
