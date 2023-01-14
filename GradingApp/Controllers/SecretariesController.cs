@@ -37,8 +37,6 @@ namespace GradingApp.Controllers
                 return Problem("Entity set 'ApplicationDBContext.Course'  is null.");
             }
 
-            var crs = from c in _db.CourseHasStudents
-                      select c;
             return View("AllCourses");
         }
 
