@@ -94,7 +94,11 @@
                                         @Html.DisplayFor(modelItem => chs.Course.Professors.name) @Html.DisplayFor(modelItem => chs.Course.Professors.surname)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => chs.grade)
+                                        @if (@chs.grade >= 0)
+                                        {
+                                            @Html.DisplayFor(modelItem => chs.grade)
+                                            
+                                        }
                                     </td>
 
                                 </tr>

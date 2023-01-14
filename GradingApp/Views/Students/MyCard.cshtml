@@ -14,6 +14,7 @@
         float sum = 0;
         var ptotal = 0;
         var ftotal = 0;
+        var ntotal = 0;
         float avg = 0;
         @foreach (CourseHasStudents chs in ViewBag.CourseHasStudents)
         {
@@ -24,9 +25,13 @@
                     sum = sum + chs.grade;
                     ptotal++;
                 }
-                @if (@chs.grade < 5)
+                else if (@chs.grade < 5 && @chs.grade > 0)
                 {
                     ftotal++;
+                }
+                else
+                {
+                    ntotal++;
                 }
 
             }
@@ -100,6 +105,10 @@
                                     <td class="failed">@ftotal</td>
                                 </tr>
                                 <tr class="row">
+                                    <td class="title">Courses without grade:</td>
+                                    <td class="">@ntotal</td>
+                                </tr>
+                                <tr class="row">
                                     <td class="title">Grade Point Average:</td>
                                     <td class="results">@avg</td>
                                 </tr>
@@ -140,11 +149,15 @@
                                     <td class="title">
                                         @chs.Course.courseTitle
                                     </td>
-                                    <td  >
+                                    <td>
                                         @chs.Course.courseSemester
                                     </td>
-                                    <td  >
-                                        @chs.grade
+                                    <td>
+                                        @if (@chs.grade >= 0)
+                                        {
+                                            @chs.grade
+
+                                        }
                                     </td>
                                     <td >
                                         @if (@chs.grade >= 5)

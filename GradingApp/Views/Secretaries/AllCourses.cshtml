@@ -112,7 +112,10 @@
                                 @c.courseSemester
                             </td>
                             <td align="center">
+                            @if (c.afm != -1)
+                            {
                                 @c.Professors.surname @c.Professors.name
+                            }
                             </td>
                             <td align="center">
                                 @count

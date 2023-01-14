@@ -12,6 +12,7 @@
     float sum = 0;
     var ptotal = 0;
     var ftotal = 0;
+    var ntotal = 0;
     float avg = 0;
     @foreach (CourseHasStudents chs in Model)
     {
@@ -22,12 +23,16 @@
                 sum = sum + chs.grade;
                 ptotal++;
             }
-            @if (@chs.grade < 5)
+            else if (@chs.grade < 5 && @chs.grade > 0)
             {
                 ftotal++;
             }
+            else
+            {
+                ntotal++;
+            }
 
-        }
+    }
     }
     @if (ptotal != 0)
     {
@@ -97,6 +102,10 @@
                                     <td class="failed">@ftotal</td>
                                 </tr>
                                 <tr class="row">
+                                    <td class="title">Courses without grade:</td>
+                                    <td class="">@ntotal</td>
+                                </tr>
+                                <tr class="row">
                                     <td class="title">Grade Point Average:</td>
                                     <td class="results">@avg</td>
                                 </tr>
@@ -132,6 +141,7 @@
                         <tr class="row">
                             <th>Subject</th>
                             <th>Semester</th>
+                            <th>Professor</th>
                             <th>Grade</th>
                             <th>Passed</th>
                         </tr>
@@ -144,13 +154,21 @@
                             {
                                 <tr class="row">
                                     <td class="title">
-                                        @chs.Course.courseTitle
+                                        @Html.DisplayFor(modelItem => chs.Course.courseTitle)
                                     </td>
                                     <td>
-                                        @chs.Course.courseSemester
+                                        @Html.DisplayFor(modelItem => chs.Course.courseSemester)
                                     </td>
                                     <td>
-                                        @chs.grade
+                                        @Html.DisplayFor(modelItem => chs.Course.Professors.name) @Html.DisplayFor(modelItem => chs.Course.Professors.surname)
+                                    </td>
+                                    <td>
+                                        @if (@chs.grade >= 0)
+                                        {
+                                            @Html.DisplayFor(modelItem => chs.grade)
+                                            
+                                        }
+                                        
                                     </td>
                                     <td>
                                         @if (@chs.grade >= 5)
