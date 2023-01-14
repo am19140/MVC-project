@@ -84,5 +84,14 @@ namespace GradingApp.Controllers
             _db.SaveChanges();
             return View();
         }
+
+        public IActionResult Profile(string Username)
+        {
+            ViewBag.Professor = _db.Professors.ToList().First(s => s.username == Username);
+
+            ViewBag.Users = _db.Users.ToList().First(s => s.username == Username);
+            ViewBag.Username = Username;
+            return View("Profile");
+        }
     }
 }

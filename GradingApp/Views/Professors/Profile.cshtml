@@ -1,0 +1,122 @@
+﻿@model List<GradingApp.Models.Professors>
+@{
+    ViewData["Title"] = "Profile";
+}
+@section Styles{
+    <link rel="stylesheet" href="~/css/MenuStyle.css" />
+    <link rel="stylesheet" href="~/css/GradesSemesterStyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}
+
+<section>
+    <div class="page">
+        <!--Section of the side navigation menu-->
+        <div class="sidenav">
+
+            <!--Section of image-->
+            <div class="profile_image">
+                <picture>
+                    <img src="@Url.Content("~/images/teacher_symbol.png")" alt="User" class="icons">
+                </picture>
+            </div>
+
+            <!--Section of menu's options-->
+            <div class="options">
+                <a href="#">
+                    <img src="@Url.Content("~/images/home.png")" alt="User" class="icons">
+                    Homepage
+                </a>
+                <button class="dropdown-btn">
+                    <img src="@Url.Content("~/images/grade.png")" alt="User" class="icons">
+                    My Grading
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a asp-controller="Professors" asp-action="GradesList" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">Graded Courses</a>
+                    <a asp-controller="Professors" asp-action="EnterGrades" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/pending.png")" alt="User" class="icons">Submit grades</a>
+                </div>
+                <a asp-controller="Professors" asp-action="Profile" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">Profile</a>
+                <a class="logout" asp-controller="Home" asp-action="Login">
+                    <img src="@Url.Content("~/images/logout.png")" alt="User" class="icons">Logout
+                </a>
+            </div>
+
+        </div>
+        <!--END OF SIDE MENU-->
+        <!--MAIN CONTENT-->
+
+        <div class="main_content">
+            
+            <h2>Hello @ViewBag.Professor.name @ViewBag.Professor.surname</h2>
+            <table>
+                <tr>
+                    <td>
+                        AFM
+                    </td>
+                    <td>
+                        @ViewBag.Professor.afm
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Username
+                    </td>
+                    <td>
+                        @ViewBag.Professor.username
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Password
+                    </td>
+                    <td>
+                        @ViewBag.Professor.Users.password
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        @ViewBag.Professor.name
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Surname
+                    </td>
+                    <td>
+                        @ViewBag.Professor.surname
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Department
+                    </td>
+                    <td>
+                        @ViewBag.Professor.department
+                    </td>
+                </tr>
+            </table>
+        </div>
+        </div>
+    <script>
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+</section>
+
+
+

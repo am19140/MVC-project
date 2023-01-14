@@ -37,10 +37,7 @@
                     <a asp-controller="Professors" asp-action="GradesList" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">Graded Courses</a>
                     <a asp-controller="Professors" asp-action="EnterGrades" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/pending.png")" alt="User" class="icons">Submit grades</a>
                 </div>
-                <a href="#about">
-                    <img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">
-                    Profile
-                </a>
+                <a asp-controller="Professors" asp-action="Profile" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">Profile</a>
                 <a class="logout" asp-controller="Home" asp-action="Login">
                     <img src="@Url.Content("~/images/logout.png")" alt="User" class="icons">Logout
                 </a>

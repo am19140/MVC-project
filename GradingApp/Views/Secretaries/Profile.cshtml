@@ -1,0 +1,144 @@
+﻿@model List<GradingApp.Models.Secretaries>
+@{
+    ViewData["Title"] = "Profile";
+}
+@section Styles{
+    <link rel="stylesheet" href="~/css/MenuStyle.css" />
+    <link rel="stylesheet" href="~/css/GradesSemesterStyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}
+
+<section>
+    <div class="page">
+        <!--Section of the side navigation menu-->
+        <div class="sidenav">
+
+            <!--Section of image-->
+            <div class="profile_image">
+                <picture>
+                    <img src="@Url.Content("~/images/secr_symbol.png")" alt="User" class="icons">
+                </picture>
+            </div>
+
+            <!--Section of menu's options-->
+            <div class="options">
+                <a href="#">
+                    <img src="@Url.Content("~/images/home.png")" alt="User" class="icons">
+                    Homepage
+                </a>
+                <!--DROPDOWN-->
+                <button class="dropdown-btn">
+                    <img src="@Url.Content("~/images/student_icon.png")" alt="User" class="icons">
+                    Student
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a asp-controller="Secretaries" asp-action="Registration" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/register.png")" alt="User" class="icons">Register</a>
+                    <a asp-controller="Secretaries" asp-action="AssignCourse" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/assign.png")" alt="User" class="icons">Assign Course</a>
+                </div>
+
+                <button class="dropdown-btn">
+                    <img src="@Url.Content("~/images/teacher.png")" alt="User" class="icons">
+                    Teacher
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a asp-controller="Secretaries" asp-action="Registration" asp-route-username="@ViewBag.Username"> <img src="@Url.Content("~/images/register.png")" alt="User" class="icons">Register</a>
+                    <a asp-controller="Secretaries" asp-action="AssignCourse" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/assign.png")" alt="User" class="icons">Assign Course</a>
+                </div>
+
+                <button class="dropdown-btn">
+                    <img src="@Url.Content("~/images/courses.png")" alt="User" class="icons">
+                    Courses
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a asp-controller="Secretaries" asp-action="Registration" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/add_course.png")" alt="User" class="icons">Register</a>
+                    <a asp-controller="Secretaries" asp-action="AllCourses" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/grade.png")" alt="User" class="icons">Overview</a>
+
+                </div>
+
+                <a asp-controller="Secretaries" asp-action="Profile" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">Profile</a>
+                <a class="logout" asp-controller="Home" asp-action="Login">
+                    <img src="@Url.Content("~/images/logout.png")" alt="User" class="icons">Logout
+                </a>
+            </div>
+
+        </div>
+        <!--END OF SIDE MENU-->
+        <!--MAIN CONTENT-->
+
+        <div class="main_content">
+            
+            <h2>Hello @ViewBag.Secretary.name @ViewBag.Secretary.surname</h2>
+            <table>
+                <tr>
+                    <td>
+                        Phone Number
+                    </td>
+                    <td>
+                        @ViewBag.Secretary.phoneNumber
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Username
+                    </td>
+                    <td>
+                        @ViewBag.Secretary.username
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Password
+                    </td>
+                    <td>
+                        @ViewBag.Secretary.Users.password
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        @ViewBag.Secretary.name
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Surname
+                    </td>
+                    <td>
+                        @ViewBag.Secretary.surname
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Department
+                    </td>
+                    <td>
+                        @ViewBag.Secretary.department
+                    </td>
+                </tr>
+            </table>
+        </div>
+    <script>
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+</section>
+
+
+
