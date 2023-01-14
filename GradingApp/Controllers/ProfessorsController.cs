@@ -26,10 +26,21 @@ namespace GradingApp.Controllers
             var crs = from c in _db.CourseHasStudents
                       select c;
 
+            if (!String.IsNullOrEmpty(SemesterNum))
+            {
+                crs = crs.Where(s => s.Course.courseSemester.ToString() == SemesterNum);
+            }
+            else
+            {
+                crs = from c in _db.CourseHasStudents
+                      select c;
+            }
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 crs = crs.Where(s => s.Course.courseTitle!.Contains(searchString));
             }
+
 
             return View(await crs.ToListAsync());
         }
