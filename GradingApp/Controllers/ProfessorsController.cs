@@ -1,5 +1,6 @@
 ﻿using GradingApp.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GradingApp.Controllers
 {
@@ -15,18 +16,22 @@ namespace GradingApp.Controllers
             return View();
         }
 
-        public IActionResult GradesList(string Username)
+        public async Task<IActionResult> GradesList(string Username, string SemesterNum, string searchString)
         {
             ViewBag.Course = _db.Course.ToList();
             ViewBag.Students = _db.Students.ToList();
             ViewBag.Professors = _db.Professors.ToList();
             ViewBag.CourseHasStudents = _db.CourseHasStudents.ToList();
             ViewBag.Username = Username;
-            if (_db.Course == null)
+            var crs = from c in _db.CourseHasStudents
+                      select c;
+
+            if (!String.IsNullOrEmpty(searchString))
             {
-                return Problem("Entity set 'ApplicationDBContext.Course'  is null.");
+                crs = crs.Where(s => s.Course.courseTitle!.Contains(searchString));
             }
-            return View("GradesList");
+
+            return View(await crs.ToListAsync());
         }
     }
 }
