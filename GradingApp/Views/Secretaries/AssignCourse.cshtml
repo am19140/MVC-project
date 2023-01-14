@@ -78,7 +78,7 @@
                 <!--UPPER FORM-->
                 <div class="form">
                     <h2>Student Assigning  </h2>
-                    <form asp-controller="Secretaries" asp-action="Register" asp-route-proffesorName="@ViewBag.Username">
+                    <form asp-controller="Secretaries" asp-action="AssignCourse" asp-route-proffesorName="@ViewBag.Username">
                         <h4>Assign a student to one of the courses available!</h4>
 
                         <!--Ragistration number-->
@@ -108,12 +108,23 @@
                 <!--DOWN FORM-->
                 <div class="form">
                     <h2>Professor Assigning  </h2>
-                    <form asp-controller="Secretaries" asp-action="Register" asp-route-proffesorName="@ViewBag.Username">
+                    <form asp-controller="Secretaries" asp-action="AssignCourse" asp-route-proffesorName="@ViewBag.Username">
                         <h4>Assign a professor to one of the courses available!</h4>
 
-                        <!--Ragistration number-->
+                        <!--Professor selection-->
                         <div class="form-group">
-                            <input class="form-control" placeholder="AFM of professor" />
+                            <select class="list">
+                                @foreach (Professors p in ViewBag.Professors)
+                                {
+                                    @if (p.afm != -1)
+                                    {
+                                        <option value="@p.afm">
+                                            @p.surname @p.name
+                                        </option>
+                                    }
+                                    
+                                }
+                            </select>
                             <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                         </div>
                         <!--Course selection-->

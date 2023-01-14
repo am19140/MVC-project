@@ -25,6 +25,7 @@ namespace GradingApp.Controllers
         public async Task<IActionResult> AssignCourse(string Username) 
         {
             ViewBag.Username = Username;
+            ViewBag.Professors = _db.Professors.ToList();
             var crs = from c in _db.Course
                       select c;
             return View(await crs.ToListAsync());
