@@ -67,5 +67,10 @@ namespace GradingApp.Controllers
             ViewBag.Username = Username;
             return View("MyCard");
         }
+        public IActionResult StudentHomepage(string Username)
+        {
+            ViewBag.Username = Username;
+            return View("StudentHomepage");
+        }
     }
 }

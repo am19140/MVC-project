@@ -105,8 +105,14 @@ h1 {
     background-color: #F4F6E9;
     border-radius: 25px;
     padding-left: 1rem;
-    padding-right:1rem;
+    padding-right:1rem; 
+
 }
+    h1:hover {
+        background-color: #8FBEA9;
+        color: white;
+        transition: 0.2s ease-in;
+    }
 h2 {
     color: #f3df66;
     font-size: 50px;

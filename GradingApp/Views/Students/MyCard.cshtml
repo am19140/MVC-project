@@ -50,7 +50,7 @@
 
             <!--Section of menu's options-->
             <div class="options">
-                <a href="#">
+                <a asp-controller="Students" asp-action="StudentHomepage" asp-route-username="@ViewBag.Username">
                     <img src="@Url.Content("~/images/home.png")" alt="User" class="icons">
                     Homepage
                 </a>
