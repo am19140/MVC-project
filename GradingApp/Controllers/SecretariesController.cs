@@ -91,5 +91,15 @@ namespace GradingApp.Controllers
             _db.SaveChanges();
             return View();
         }
+
+        public IActionResult AssignProfessor()
+        {
+            int x = Int32.Parse(Request.Form["course"].ToString());
+            Course c = _db.Course.ToList().First(c => c.idCourse == x);
+            c.afm = Int32.Parse(Request.Form["professor"].ToString());
+            _db.Course.Update(c);
+            _db.SaveChanges();
+            return View();
+        }
     }
 }

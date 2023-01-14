@@ -108,12 +108,12 @@
                 <!--DOWN FORM-->
                 <div class="form">
                     <h2>Professor Assigning  </h2>
-                    <form asp-controller="Secretaries" asp-action="AssignCourse" asp-route-proffesorName="@ViewBag.Username">
+                    <form asp-controller="Secretaries" asp-action="AssignProfessor" asp-route-proffesorName="@ViewBag.Username">
                         <h4>Assign a professor to one of the courses available!</h4>
 
                         <!--Professor selection-->
                         <div class="form-group">
-                            <select class="list">
+                            <select class="list" name="professor">
                                 @foreach (Professors p in ViewBag.Professors)
                                 {
                                     @if (p.afm != -1)
@@ -129,10 +129,10 @@
                         </div>
                         <!--Course selection-->
                         <div class="form-group">
-                            <select class="list">
+                            <select class="list" name="course">
                                 @foreach (Course c in Model)
                                 {
-                                    <option value="@Html.DisplayFor(modelItem => c.courseTitle)">
+                                    <option value="@c.idCourse">
                                         @Html.DisplayFor(modelItem => c.courseTitle)
                                     </option>
                                 }
