@@ -101,5 +101,16 @@ namespace GradingApp.Controllers
             _db.SaveChanges();
             return View();
         }
+
+        public IActionResult AssignStudent()
+        {
+            CourseHasStudents chs = new CourseHasStudents();
+            chs.idCourse = Int32.Parse(Request.Form["course_student"].ToString());
+            chs.registrationNumber = Int32.Parse(Request.Form["student"].ToString());
+            chs.grade = -1;
+            _db.CourseHasStudents.Add(chs);
+            _db.SaveChanges();
+            return View();
+        }
     }
 }
