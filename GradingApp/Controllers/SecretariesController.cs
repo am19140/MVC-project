@@ -1,6 +1,7 @@
 ﻿using GradingApp.Data;
 using Microsoft.AspNetCore.Mvc;
 using GradingApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace GradingApp.Controllers
 {
@@ -21,10 +22,12 @@ namespace GradingApp.Controllers
             ViewBag.Username = Username;
             return View("Registration");
         }
-        public IActionResult AssignCourse(string Username) 
+        public async Task<IActionResult> AssignCourse(string Username) 
         {
             ViewBag.Username = Username;
-            return View("AssignCourse");
+            var crs = from c in _db.Course
+                      select c;
+            return View(await crs.ToListAsync());
         }
         public IActionResult AllCourses(string Username)
         {
