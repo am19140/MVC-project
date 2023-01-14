@@ -1,4 +1,5 @@
 ﻿using GradingApp.Data;
+using GradingApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -43,6 +44,45 @@ namespace GradingApp.Controllers
 
 
             return View(await crs.ToListAsync());
+        }
+
+        public async Task<IActionResult> EnterGrades(string Username, string SemesterNum, string searchString)
+        {
+            ViewBag.Course = _db.Course.ToList();
+            ViewBag.Students = _db.Students.ToList();
+            ViewBag.Professors = _db.Professors.ToList();
+            ViewBag.CourseHasStudents = _db.CourseHasStudents.ToList();
+            ViewBag.Username = Username;
+            var crs = from c in _db.CourseHasStudents
+                      select c;
+
+            if (!String.IsNullOrEmpty(SemesterNum))
+            {
+                crs = crs.Where(s => s.Course.courseSemester.ToString() == SemesterNum);
+            }
+            else
+            {
+                crs = from c in _db.CourseHasStudents
+                      select c;
+            }
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                crs = crs.Where(s => s.Course.courseTitle!.Contains(searchString));
+            }
+
+
+            return View(await crs.ToListAsync());
+        }
+
+        public IActionResult SubmitGrade()
+        {
+            int x = Int32.Parse(Request.Form["regnum"].ToString());
+            CourseHasStudents chs = _db.CourseHasStudents.ToList().First(chs => chs.registrationNumber == x);
+            chs.grade = Int32.Parse(Request.Form["gradeInput"].ToString());
+            _db.CourseHasStudents.Update(chs);
+            _db.SaveChanges();
+            return View();
         }
     }
 }

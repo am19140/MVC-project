@@ -35,8 +35,7 @@
                 </button>
                 <div class="dropdown-container">
                     <a asp-controller="Professors" asp-action="GradesList" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">Graded Courses</a>
-                    <a href="#"><img src="@Url.Content("~/images/pending.png")" alt="User" class="icons">Submit grades</a>
-
+                    <a asp-controller="Professors" asp-action="EnterGrades" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/pending.png")" alt="User" class="icons">Submit grades</a>
                 </div>
                 <a href="#about">
                     <img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">
