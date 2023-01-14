@@ -1,0 +1,128 @@
+﻿.main_content {
+    height: 100%;
+    width: 88%;
+    position: fixed;
+    left: 240px;
+    display: flex;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    align-items: center;
+}
+
+.choice {
+    width: 90%;
+    height: 30%;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3%;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 1rem;
+    font-size: 21px;
+}
+
+.results {
+    width: 90%;
+    height: 60%;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 0rem;
+    font-size: 21px;
+}
+.left {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content: space-between;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: 100%;
+    text-align: center;
+    color: #368081;
+    margin-bottom: 3%;
+}
+.choice .container{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    width:90%;
+    justify-content:space-around;
+}
+
+.choice table, .results table {
+    border-collapse: collapse;
+    border-radius: 25px;
+    width:100%;
+}
+.results form{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    margin-bottom:1rem;
+
+}
+.results form select{
+}
+thead {
+    height: 60px;
+    text-align: left;
+    color: white;
+    background-color: #f3df66;
+    border-radius: 25px;
+    width: 80%;
+}
+
+td {
+    height: 40px;
+}
+tbody .title {
+    font-weight: 600;
+    width: 60%;
+}
+
+tr .passed {
+    color: #368081;
+}
+
+tr .failed {
+    color: #c84c4c;
+}
+
+h1 {
+    font-size: 140px;
+    background-color: #F4F6E9;
+    border-radius: 25px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+    h1:hover {
+        background-color: #8FBEA9;
+        color: white;
+        transition: 0.2s ease-in;
+    }
+
+h2 {
+    color: #f3df66;
+    font-size: 50px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1%;
+    margin-left: 0.5%;
+}

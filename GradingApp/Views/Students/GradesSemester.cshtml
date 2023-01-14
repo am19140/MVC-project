@@ -2,20 +2,12 @@
 @{
     ViewData["Title"] = "GradesSemester";
 }
+@section Styles{
+    <link rel="stylesheet" href="~/css/MenuStyle.css" />
+    <link rel="stylesheet" href="~/css/GradesSemesterStyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}
 
-<h1>Grades Per Semester</h1>
-
-<form asp-controller="Students" asp-action="GradesSemester" method="get">
-    <select id="SemesterNum" name="SemesterNum">
-        <option value="" >All</option>
-        <option value="1">Semester 1</option>
-        <option value="2">Semester 2</option>
-        <option value="3">Semester 3</option>
-        <option value="4">Semester 4</option>
-    </select>
-    <input type="submit" value="Send" />
-    <input type="hidden" name="Username" value="@ViewBag.Username" />
-</form>
 @{
     float sum = 0;
     var ptotal = 0;
@@ -39,56 +31,166 @@
     }
     @if (ptotal != 0)
     {
-        avg = sum/ptotal;
+        avg = sum / ptotal;
     }
 
 
 }
-<h3>Semester Summary</h3>
-<h4>Number of Passed Courses: @ptotal</h4>
-<h4>Number of Failed Courses: @ftotal</h4>
-<h4>Semester Average: @avg</h4>
-<table class="table table-bordered table-stripped" style="width:60%">
-    <thead>
-        <tr>
-            <th>
-                Subject
-            </th>
-            <th>
-                Semester
-            </th>
-            <th>
-                Professor
-            </th>
-            <th>
-                Grade
-            </th>
-        </tr>
-    </thead>
-    <tbody>
+<section>
+    <div class="page">
+        <!--Section of the side navigation menu-->
+        <div class="sidenav">
 
-        @foreach (CourseHasStudents chs in Model)
-        {
-            @if (@chs.Students.username == @ViewBag.Username)
-            {
-                <tr>
-                    <td width="60%">
-                        @Html.DisplayFor(modelItem => chs.Course.courseTitle)
-                    </td>
-                    <td width="20%" align="center">
-                        @Html.DisplayFor(modelItem => chs.Course.courseSemester)
-                    </td>
-                    <td width="20%" align="center">
-                        @Html.DisplayFor(modelItem => chs.Course.Professors.name) @Html.DisplayFor(modelItem => chs.Course.Professors.surname)
-                    </td>
-                    <td width="20%" align="center">
-                        @Html.DisplayFor(modelItem => chs.grade)
-                    </td>
+            <!--Section of image-->
+            <div class="profile_image">
+                <picture>
+                    <img src="@Url.Content("~/images/student_symbol.png")" alt="User" class="icons">
+                </picture>
+            </div>
 
-                </tr>
+            <!--Section of menu's options-->
+            <div class="options">
+                <a asp-controller="Students" asp-action="StudentHomepage" asp-route-username="@ViewBag.Username">
+                    <img src="@Url.Content("~/images/home.png")" alt="User" class="icons">
+                    Homepage
+                </a>
+                <button class="dropdown-btn">
+                    <img src="@Url.Content("~/images/grade.png")" alt="User" class="icons">
+                    My Grades
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a asp-controller="Students" asp-action="MyCard" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">My Card</a>
+                    <a asp-controller="Students" asp-action="GradesSemester" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/history.png")" alt="User" class="icons">Per semester</a>
+                    <a asp-controller="Students" asp-action="GradesSubject" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">Overview</a>
+                </div>
 
-            }
+                <a href="#about">
+                    <img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">
+                    Profile
+                </a>
+                <a class="logout" asp-controller="Home" asp-action="Login">
+                    <img src="@Url.Content("~/images/logout.png")" alt="User" class="icons">Logout
+                </a>
+            </div>
 
+        </div>
+        <!--END OF SIDE MENU-->
+        <!--MAIN CONTENT-->
+
+        <div class="main_content">
+
+            <!--SECTION TO CHOOSE SEMESTER-->
+            <div class="choice">
+
+                <h2>Your academic overview</h2>
+                <div class="container">
+                    <div class="left">
+                        <table class="table table-bordered table-stripped">
+                            <tbody>
+                                <tr class="row">
+                                    <td class="title">Number of Passed Courses:</td>
+                                    <td class="passed">@ptotal</td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="title">Number of Failed Courses:</td>
+                                    <td class="failed">@ftotal</td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="title">Grade Point Average:</td>
+                                    <td class="results">@avg</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="right">
+                        <h1>@avg.0</h1>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!--SECTION TO SHOW RESULTS-->
+            <div class="results">
+                <h2>Courses</h2>
+                <!--DROPDOWN MENU FOR SEMSESTERS-->
+                <form asp-controller="Students" asp-action="GradesSemester" method="get">
+                    <select id="SemesterNum" name="SemesterNum">
+                        <option value="">All</option>
+                        <option value="1">Semester 1</option>
+                        <option value="2">Semester 2</option>
+                        <option value="3">Semester 3</option>
+                        <option value="4">Semester 4</option>
+                    </select>
+                    <input type="submit" value="Search" />
+                    <input type="hidden" name="Username" value="@ViewBag.Username" />
+                </form>
+                <table class="table table-bordered table-stripped">
+                    <thead>
+                        <tr class="row">
+                            <th>Subject</th>
+                            <th>Semester</th>
+                            <th>Grade</th>
+                            <th>Passed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (CourseHasStudents chs in Model)
+                        {
+                            @if (@chs.Students.username == @ViewBag.Username)
+                            {
+                                <tr class="row">
+                                    <td class="title">
+                                        @chs.Course.courseTitle
+                                    </td>
+                                    <td>
+                                        @chs.Course.courseSemester
+                                    </td>
+                                    <td>
+                                        @chs.grade
+                                    </td>
+                                    <td>
+                                        @if (@chs.grade >= 5)
+                                        {
+                                            <img src="@Url.Content("~/images/tick_green.png")" alt="User" class="icons">
+                                        }
+                                    </td>
+                                </tr>
+
+                            }
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            
+
+        </div>
+
+
+
+    </div>
+    <script>
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
         }
-    </tbody>
-</table>
+    </script>
+</section>
+
+
+
