@@ -1,0 +1,78 @@
+﻿@model List<GradingApp.Models.CourseHasStudents>
+@{
+    ViewData["Title"] = "GradesList";
+
+}
+
+<div>
+    <form asp-controller="Professors" asp-action="GradesList" method="get">
+        <p>
+            <select id="SemesterNum" name="SemesterNum">
+                <option value="">All</option>
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+                <option value="3">Semester 3</option>
+                <option value="4">Semester 4</option>
+            </select>
+            Course: <input type="text" name="SearchString" />
+            <input type="submit" value="Search" />
+            <input type="hidden" name="Username" value="@ViewBag.Username" />
+        </p>
+    </form>
+    @{
+        List<int> s = new List<int>();
+    }
+    @foreach (CourseHasStudents c in Model)
+{
+        @if (c.Course.Professors.username == @ViewBag.Username && !s.Contains(c.idCourse))
+        {
+            <h2>
+                @c.Course.courseTitle
+            </h2>
+            <h4>
+                Semester @c.Course.courseSemester
+            </h4>
+            <table class="table table-bordered table-stripped">
+                <thead>
+                    <tr>
+                        <th>
+                            Registration Number
+                        </th>
+                        <th>
+                            Full Name
+                        </th>
+                        <th align="center">
+                            Grade
+                        </th>
+                    </tr> 
+                </thead>
+                <tbody>
+                    @foreach (CourseHasStudents chs in Model)
+                    {
+                        @if (c.idCourse == chs.idCourse && chs.grade>=0)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => chs.Students.registressionNumber)
+                                    
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => chs.Students.name) @Html.DisplayFor(modelItem => chs.Students.surname)
+                                </td>
+                                <td align="center">
+                                    @Html.DisplayFor(modelItem => chs.grade)
+                                </td>
+                            </tr>
+                        }
+                    }
+
+
+                </tbody>
+
+            </table>
+            s.Add(c.idCourse);
+        }
+
+        
+    }
+</div>

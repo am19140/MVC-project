@@ -1,2 +1,7 @@
-﻿body {
+﻿.main_content {
+    background-color: #f4f7e7;
+}
+table {
+    width:fit-content;
+    margin-right: 500px;
 }

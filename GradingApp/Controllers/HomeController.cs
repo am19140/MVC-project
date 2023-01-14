@@ -9,13 +9,11 @@ namespace GradingApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDBContext _db;
-        string error;
 
         public HomeController(ILogger<HomeController> logger, ApplicationDBContext db)
         {
             _logger = logger;
             _db = db;
-            error = "";
         }
 
         public IActionResult Index()
@@ -39,6 +37,23 @@ namespace GradingApp.Controllers
             string password = model.Password;
             
             List<Users> usersList = _db.Users.ToList();
+            List<Professors> profList = _db.Professors.ToList();
+            if (!profList.Any(p => p.afm == -1))
+            {
+                Users u = new Users();
+                Professors p = new Professors();
+                u.username = "placeholder";
+                u.password = "placeholder";
+                p.name = "placeholder";
+                p.surname = "placeholder";
+                p.department = "placeholder";
+                p.afm = -1;
+                p.username = "placeholder";
+                u.role = "placeholder";
+                _db.Users.Add(u);
+                _db.Professors.Add(p);
+                _db.SaveChanges();
+            }
             
             foreach (Users u in usersList)
             {

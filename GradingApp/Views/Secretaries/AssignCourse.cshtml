@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<GradingApp.Models.Course>
+@{
     ViewData["Title"] = "AssignCourse";
 
 }
@@ -77,18 +78,23 @@
                 <!--UPPER FORM-->
                 <div class="form">
                     <h2>Student Assigning  </h2>
-                    <form asp-controller="Secretaries" asp-action="Register" asp-route-proffesorName="@ViewBag.Username">
+                    <form asp-controller="Secretaries" asp-action="AssignStudent" asp-route-proffesorName="@ViewBag.Username">
                         <h4>Assign a student to one of the courses available!</h4>
 
                         <!--Ragistration number-->
                         <div class="form-group">
-                            <input class="form-control" placeholder="Registration Number of student" />
+                            <input class="form-control" placeholder="Registration Number of student" name="student"/>
                             <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                         </div>
                         <!--Course selection-->
                         <div class="form-group">
-                            <select class="list">
-                                <option>Informatics</option>
+                            <select class="list" name="course_student">
+                                @foreach (Course c in Model)
+                                {
+                                    <option value="@c.idCourse">
+                                        @Html.DisplayFor(modelItem => c.courseTitle)
+                                    </option>
+                                }
 
                             </select>
                             <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
@@ -102,18 +108,34 @@
                 <!--DOWN FORM-->
                 <div class="form">
                     <h2>Professor Assigning  </h2>
-                    <form asp-controller="Secretaries" asp-action="Register" asp-route-proffesorName="@ViewBag.Username">
+                    <form asp-controller="Secretaries" asp-action="AssignProfessor" asp-route-proffesorName="@ViewBag.Username">
                         <h4>Assign a professor to one of the courses available!</h4>
 
-                        <!--Ragistration number-->
+                        <!--Professor selection-->
                         <div class="form-group">
-                            <input class="form-control" placeholder="AFM of professor" />
+                            <select class="list" name="professor">
+                                @foreach (Professors p in ViewBag.Professors)
+                                {
+                                    @if (p.afm != -1)
+                                    {
+                                        <option value="@p.afm">
+                                            @p.surname @p.name
+                                        </option>
+                                    }
+                                    
+                                }
+                            </select>
                             <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                         </div>
                         <!--Course selection-->
                         <div class="form-group">
-                            <select class="list">
-                                <option>Informatics</option>
+                            <select class="list" name="course">
+                                @foreach (Course c in Model)
+                                {
+                                    <option value="@c.idCourse">
+                                        @Html.DisplayFor(modelItem => c.courseTitle)
+                                    </option>
+                                }
                             </select>
                             <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                         </div>
