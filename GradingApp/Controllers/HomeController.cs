@@ -9,13 +9,11 @@ namespace GradingApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDBContext _db;
-        string error;
 
         public HomeController(ILogger<HomeController> logger, ApplicationDBContext db)
         {
             _logger = logger;
             _db = db;
-            error = "";
         }
 
         public IActionResult Index()

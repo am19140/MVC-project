@@ -73,43 +73,43 @@
             
             <div class="form">
                 <h2>Registration Form</h2>
-                <form asp-controller="Secretaries" asp-action="Register" asp-route-proffesorName="@ViewBag.Username">
+                <form asp-controller="Secretaries" asp-action="RegisterUser" asp-route-proffesorName="@ViewBag.Username">
                 <h4>Add a new student or professor below:</h4>
                 <!--First Name-->
                 <div class="form-group">
-                        <input class="form-control" placeholder="First Name" />
+                        <input class="form-control" placeholder="First Name" name="name" />
                     <span  class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                 </div>
                     <!--Last Name Name-->
                     <div class="form-group">
-                        <input class="form-control" placeholder="Last Name" />
+                        <input class="form-control" placeholder="Last Name" name="surname"/>
                         <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                     </div>
                     <!--Department-->
                     <div class="form-group">
-                        <input class="form-control" placeholder="Department" />
+                        <input class="form-control" placeholder="Department" name="department"/>
                         <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                     </div>
                     <!--Username-->
                     <div class="form-group">
-                        <input class="form-control" placeholder="Username" />
+                        <input class="form-control" placeholder="Username" name="username"/>
                         <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                     </div>
                     <!--Password-->
                     <div class="form-group">
-                        <input class="form-control" placeholder="Password" />
+                        <input type="password" class="form-control" placeholder="Password" name="password"/>
                         <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                     </div>
                     <!--Code-->
                     <div class="form-group">
-                        <input class="form-control" placeholder="Type registration number for students and AFM for Professors" />
+                        <input class="form-control" placeholder="Type registration number for students and AFM for Professors" name="code"/>
                         <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                     </div>
                     <div class="form-group">
                         <div class="selection">
                             <label class="container">
-                                Professors
-                                <input type="radio" checked="checked" name="radio" class="input">
+                                Professor
+                                <input type="radio" checked="checked" name="radio" class="input" value="professor">
                                 <span class="checkmark"></span>
                             </label>
 
@@ -117,7 +117,7 @@
                         <div class="selection">
                             <label class="container">
                                 Student
-                                <input type="radio" checked="checked" name="radio" class="input">
+                                <input type="radio" checked="checked" name="radio" class="input" value="student">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
@@ -138,27 +138,16 @@
 
                     <div class="inputs">
                         <h2>Course Registration </h2>
-                        <form asp-controller="Secretaries" asp-action="Register" asp-route-proffesorName="@ViewBag.Username">
+                        <form asp-controller="Secretaries" asp-action="RegisterCourse" asp-route-proffesorName="@ViewBag.Username">
                             <h4>Add new courses below:</h4>
-
-                            <!--Course ID-->
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Course ID" />
-                                <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
-                            </div>
                             <!--Course title-->
                             <div class="form-group">
-                                <input class="form-control" placeholder="Course title" />
+                                <input class="form-control" placeholder="Course title" name="title"/>
                                 <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                             </div>
                             <!--Semester-->
                             <div class="form-group">
-                                <input class="form-control" placeholder="Semester of course" />
-                                <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
-                            </div>
-                            <!--AFM-->
-                            <div class="form-group">
-                                <input class="form-control" placeholder="AFM of Professor" />
+                                <input class="form-control" placeholder="Semester of course" name="semester"/>
                                 <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                             </div>
 

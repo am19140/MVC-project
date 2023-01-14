@@ -1,5 +1,6 @@
 ﻿using GradingApp.Data;
 using Microsoft.AspNetCore.Mvc;
+using GradingApp.Models;
 
 namespace GradingApp.Controllers
 {
@@ -40,7 +41,50 @@ namespace GradingApp.Controllers
             return View("AllCourses");
         }
 
-        public IActionResult Register() {
+        public IActionResult RegisterUser() {
+            
+            Users u = new Users();
+            u.username = Request.Form["username"].ToString();
+            u.password = Request.Form["password"].ToString();
+            if (Request.Form["radio"].ToString() == "professor")
+            {
+                Professors p = new Professors();
+                p.name = Request.Form["name"].ToString();
+                p.surname = Request.Form["surname"].ToString();
+                p.department = Request.Form["department"].ToString();
+                p.afm = Int32.Parse(Request.Form["code"].ToString());
+                p.username = Request.Form["username"].ToString();
+                u.role = "professor";
+                _db.Users.Add(u);
+                _db.Professors.Add(p);
+            }
+            else if (Request.Form["radio"].ToString() == "student")
+            {
+                Students s = new Students();
+                s.name = Request.Form["name"].ToString();
+                s.surname = Request.Form["surname"].ToString();
+                s.department = Request.Form["department"].ToString();
+                s.registressionNumber = Int32.Parse(Request.Form["code"].ToString());
+                s.username = Request.Form["username"].ToString();
+                u.role = "student";
+                _db.Users.Add(u);
+                _db.Students.Add(s);        
+            }
+            else
+            {
+                
+            }
+            _db.SaveChanges();
+            return View();
+        }
+        public IActionResult RegisterCourse()
+        {
+            Course c = new Course();
+            c.afm = -1;
+            c.courseTitle = Request.Form["title"].ToString();
+            c.courseSemester = Int32.Parse(Request.Form["semester"].ToString());
+            _db.Course.Add(c);
+            _db.SaveChanges();
             return View();
         }
     }
