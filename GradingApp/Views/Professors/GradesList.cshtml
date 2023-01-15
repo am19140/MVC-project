@@ -10,6 +10,7 @@
 }
 <section>
     <div class="page">
+
         <!--Section of the side navigation menu-->
         <div class="sidenav">
 
@@ -47,77 +48,131 @@
 
         </div>
 
-    </div>
-</section>
-<div>
-    <form asp-controller="Professors" asp-action="GradesList" method="get">
-        <p>
-            <select id="SemesterNum" name="SemesterNum">
-                <option value="">All</option>
-                <option value="1">Semester 1</option>
-                <option value="2">Semester 2</option>
-                <option value="3">Semester 3</option>
-                <option value="4">Semester 4</option>
-            </select>
-            Course: <input type="text" name="SearchString" />
-            <input type="submit" value="Search" />
-            <input type="hidden" name="Username" value="@ViewBag.Username" />
-        </p>
-    </form>
-    @{
-        List<int> s = new List<int>();
-    }
-    @foreach (CourseHasStudents c in Model)
-{
-        @if (c.Course.Professors.username == @ViewBag.Username && !s.Contains(c.idCourse))
-        {
-            <h2>
-                @c.Course.courseTitle
-            </h2>
-            <h4>
-                Semester @c.Course.courseSemester
-            </h4>
-            <table class="table table-bordered table-stripped">
-                <thead>
-                    <tr>
-                        <th>
-                            Registration Number
-                        </th>
-                        <th>
-                            Full Name
-                        </th>
-                        <th align="center">
-                            Grade
-                        </th>
-                    </tr> 
-                </thead>
-                <tbody>
-                    @foreach (CourseHasStudents chs in Model)
+        <div class="main_content">
+            <div class="top">
+                <h2>My Courses</h2>
+
+            </div>
+            <div class="courses">
+                <div class="search">
+                <form asp-controller="Professors" asp-action="GradesList" method="get">
+                        
+                        <div class="select">
+                            <select id="SemesterNum" name="SemesterNum">
+                                <option value="">All</option>
+                                <option value="1">Semester 1</option>
+                                <option value="2">Semester 2</option>
+                                <option value="3">Semester 3</option>
+                                <option value="4">Semester 4</option>
+                            </select>
+                            <input class="btn" type="image" src="~/images/search.png" value="" />
+
+                        </div>
+                      
+
+                           <div class="bar">
+                               <input class="input" type="text" name="SearchString" placeholder="Search a subject" />
+                                <input class="btn" type="image" src="~/images/search.png" value="" />
+
+                            </div>
+                       
+                         <input type="hidden" name="Username" value="@ViewBag.Username" />
+
+                    </form>
+
+                </div>
+                
+                   
+                @{
+                    List<int> s = new List<int>();
+                }
+                
+                @foreach (CourseHasStudents c in Model)
+                {   
+                    
+                    @if (c.Course.Professors.username == @ViewBag.Username && !s.Contains(c.idCourse))
                     {
-                        @if (c.idCourse == chs.idCourse && chs.grade>=0)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => chs.Students.registressionNumber)
-                                    
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => chs.Students.name) @Html.DisplayFor(modelItem => chs.Students.surname)
-                                </td>
-                                <td align="center">
-                                    @Html.DisplayFor(modelItem => chs.grade)
-                                </td>
-                            </tr>
-                        }
+                        <div class="course">
+                            <div class="course_title">
+                                <h3>
+                                    @c.Course.courseTitle
+                                </h3>
+
+                            </div>
+                            <div class="course_info">
+
+                                <h4>
+                                    Semester @c.Course.courseSemester
+                                </h4>
+                                <table class="table table-bordered table-stripped">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Registration Number
+                                            </th>
+                                            <th>
+                                                Full Name
+                                            </th>
+                                            <th align="center">
+                                                Grade
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (CourseHasStudents chs in Model)
+                                        {
+                                            @if (c.idCourse == chs.idCourse && chs.grade >= 0)
+                                            {
+                                                <tr class="row">
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => chs.Students.registressionNumber)
+
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => chs.Students.name) @Html.DisplayFor(modelItem => chs.Students.surname)
+                                                    </td>
+                                                    <td align="center">
+                                                        @Html.DisplayFor(modelItem => chs.grade)
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+
+
+                                    </tbody>
+
+                                </table>
+
+
+                            </div>
+
+                     
+                        </div>
+                        s.Add(c.idCourse);
                     }
 
 
-                </tbody>
+                }
+            </div>
+        </div>
 
-            </table>
-            s.Add(c.idCourse);
+    </div>
+
+
+    <script>
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
         }
-
-        
-    }
-</div>
+    </script>
+</section>
