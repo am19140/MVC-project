@@ -12,8 +12,8 @@
     justify-content:center;
 }
 .courses {
-    width: 90%;
-    height: 80%;
+    width: 80%;
+    height: 70%;
     background-color: white;
     border-radius: 20px;
     display: flex;
@@ -56,27 +56,28 @@ h2 {
 
 .search{
     position:fixed;
-    right:4%;
+    right:1%;
     top:4%;
-    width:20%;
     height:35px;
-    
+    width:400px;
 }
 form {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content:space-around;
     height:100%;
 
 }
 .bar{
     display:flex;
     flex-direction:row;
+    align-items:center;
     background-color:white;   
-    border-radius:25px;
+    border-radius:10px;
     margin-right: 2%;
-    padding: 1%;
+    padding-left: 4%;
+    padding-right:4%;
+    width:100%;
 
 }
 .bar img{
@@ -90,19 +91,15 @@ form .input {
     font-size: 18px;
     border-radius: 25px;
 }
-    form .btn {
-        outline: none;
-        border: none;
-        border-radius: 25px;
-        background-color: #368081;
-        color: white;
-        font-weight: 500;
-        font-size: large;
-        transition: all 0.5s;
-    }
+form .btn {
+    outline: none;
+    border: none;
+    font-weight: 500;
+    font-size: large;
+    transition: all 0.5s;
+}
 
 .btn:hover {
-    background-color: #94a673;
     cursor: pointer;
 }
 

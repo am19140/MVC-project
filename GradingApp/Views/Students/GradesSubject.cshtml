@@ -54,11 +54,11 @@
                 <form asp-controller="Students" asp-action="GradesSubject" method="get">
                         
                         <div class="bar">
-                            <img src="@Url.Content("~/images/search.png")" alt="User" class="icons">
-                            <input class="input" type="text" name="SearchString" placeholder="Search a subject" />
+                        <input class="input" type="text" name="SearchString" placeholder="Search a subject" />
+                        <input class="btn" type="image" src="~/images/search.png" value="" />
+
                         </div>
 
-                        <input class="btn"type="submit" value="Search" />
                         <input type="hidden" name="Username" value="@ViewBag.Username" />
                     
                 </form>

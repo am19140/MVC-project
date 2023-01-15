@@ -69,63 +69,58 @@
             </div>
         </div>
         <!--END OF MENU-->
-    </div>
 
+        <div class="main_content">
 
-    <div class="main_content">
-        <h2 align="center">Available Courses  </h2>
-            <table class="table table-bordered table-stripped" align="right">
-                <thead>
-                    <tr>
-                        <th>
-                            Subject
-                        </th>
-                        <th>
-                            Semester
-                        </th>
-                        <th>
-                            Professor
-                        </th>
-                    <th>
-                        Number of Registered students
-                    </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                @foreach (Course c in @ViewBag.Course)
-                {
-                    int count = 0;
-                    @foreach (CourseHasStudents chs in @ViewBag.CourseHasStudents)
-                    {
-                        
-                        @if (c.idCourse == chs.idCourse)
-                        {
-                            count++;
-                        }
-                    }
-                    <tr>
-                            <td>
-                                @c.courseTitle
-                            </td>
-                            <td align="center">
-                                @c.courseSemester
-                            </td>
-                            <td align="center">
-                            @if (c.afm != -1)
-                            {
-                                @c.Professors.surname @c.Professors.name
-                            }
-                            </td>
-                            <td align="center">
-                                @count
-                            </td>
+            <div class="courses">
+                <h2 >Available Courses  </h2>
+                <table class="table table-bordered table-stripped" >
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Semester</th>
+                            <th>Professor</th>
+                            <th>Number of Registered students </th>
                         </tr>
-                    
-                }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+
+                        @foreach (Course c in @ViewBag.Course)
+                        {
+                            int count = 0;
+                            @foreach (CourseHasStudents chs in @ViewBag.CourseHasStudents)
+                            {
+
+                                @if (c.idCourse == chs.idCourse)
+                                {
+                                    count++;
+                                }
+                            }
+                            <tr class="row">
+                                <td class="title">
+                                    @c.courseTitle
+                                </td>
+                                <td align="center">
+                                    @c.courseSemester
+                                </td>
+                                <td align="center">
+                                    @c.Professors.surname @c.Professors.name
+                                </td>
+                                <td align="center">
+                                    @count
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+          
+        </div>
     </div>
+
+
+  
                 
 
 

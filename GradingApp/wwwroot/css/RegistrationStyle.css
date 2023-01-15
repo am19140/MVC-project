@@ -149,10 +149,13 @@ form{
         text-align:right;
         height:50%;
 
+
 }
 .right img{
     width:350px;
 }
+.right .hidden{
+display:none;}
 
 
     /*RADIO BUTTONS STYLING*/
@@ -239,4 +242,21 @@ form{
         display: flex;
         flex-direction: column;
     }
+}
+@media screen and (min-height:1300px){
+    .right{
+        height:90%;
+        max-height:2000px;
+        
+    }
+    .form1{
+        height:100%;
+    }
+    .right .upper{
+        display:flex;
+        align-items:flex-end;
+        justify-content:flex-end;
+    }
+    .upper .hidden{
+            display:block    }
 }
