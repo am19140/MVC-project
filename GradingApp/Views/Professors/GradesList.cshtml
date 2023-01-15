@@ -3,7 +3,52 @@
     ViewData["Title"] = "GradesList";
 
 }
+@section Styles{
+    <link rel="stylesheet" href="~/css/MenuStyle.css" />
+    <link rel="stylesheet" href="~/css/GradesListStyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}
+<section>
+    <div class="page">
+        <!--Section of the side navigation menu-->
+        <div class="sidenav">
 
+            <!--Section of image-->
+            <div class="profile_image">
+                <picture>
+                    <img src="@Url.Content("~/images/teacher_symbol.png")" alt="User" class="icons">
+                </picture>
+            </div>
+
+            <!--Section of menu's options-->
+            <div class="options">
+                <a href="#">
+                    <img src="@Url.Content("~/images/home.png")" alt="User" class="icons">
+                    Homepage
+                </a>
+                <button class="dropdown-btn">
+                    <img src="@Url.Content("~/images/grade.png")" alt="User" class="icons">
+                    My Grading
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a asp-controller="Professors" asp-action="GradesList" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">Graded Courses</a>
+                    <a href="#"><img src="@Url.Content("~/images/pending.png")" alt="User" class="icons">Submit grades</a>
+
+                </div>
+                <a href="#about">
+                    <img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">
+                    Profile
+                </a>
+                <a class="logout" asp-controller="Home" asp-action="Login">
+                    <img src="@Url.Content("~/images/logout.png")" alt="User" class="icons">Logout
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
 <div>
     <form asp-controller="Professors" asp-action="GradesList" method="get">
         <p>

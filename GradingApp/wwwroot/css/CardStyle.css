@@ -2,24 +2,25 @@
     height: 100%;
     width: 88%;
     position: fixed;
-    left: 240px;
+    left: 200px;
     display: flex;
     padding: 10px;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
     align-items: center;
+    justify-content:center;
 }
 .top-title{
     position:fixed;
     color:#368081;
     font-size:25px;
     font-weight:600;
-    right:200px;
+    right:50px;
 }
 .statistics{
-    width:90%;
-    height:30%;
+    width:70%;
+    height:25%;
     background-color:white;
     border-radius:20px;
     display:flex;
@@ -59,7 +60,7 @@
     margin-bottom:3%;
 }
 .grades {
-    width: 90%;
+    width: 70%;
     height: 55%;
     background-color: white;
     border-radius: 20px;
