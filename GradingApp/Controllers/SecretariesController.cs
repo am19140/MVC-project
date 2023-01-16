@@ -121,5 +121,10 @@ namespace GradingApp.Controllers
             ViewBag.Username = Username;
             return View("Profile");
         }
+        public IActionResult SecretaryHomepage(string Username)
+        {
+            ViewBag.Username = Username;
+            return View("SecretaryHomepage");
+        }
     }
 }

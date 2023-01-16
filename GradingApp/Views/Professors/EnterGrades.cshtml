@@ -3,82 +3,178 @@
     ViewData["Title"] = "EnterGrades";
 
 }
+@section Styles{
+    <link rel="stylesheet" href="~/css/MenuStyle.css" />
+    <link rel="stylesheet" href="~/css/EnterGradesStyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}
 
-<div>
-    <form asp-controller="Professors" asp-action="EnterGrades" method="get">
-        <p>
-            <select id="SemesterNum" name="SemesterNum">
-                <option value="">All</option>
-                <option value="1">Semester 1</option>
-                <option value="2">Semester 2</option>
-                <option value="3">Semester 3</option>
-                <option value="4">Semester 4</option>
-            </select>
-            Course: <input type="text" name="SearchString" />
-            <input type="submit" value="Search" />
-            <input type="hidden" name="Username" value="@ViewBag.Username" />
-        </p>
-    </form>
-    @{
-        List<int> s = new List<int>();
-    }
-    @foreach (CourseHasStudents c in Model)
-{
-        @if (c.Course.Professors.username == @ViewBag.Username && !s.Contains(c.idCourse))
-        {
-            <h2>
-                @c.Course.courseTitle
-            </h2>
-            <h4>
-                Semester @c.Course.courseSemester
-            </h4>
-            <table class="table table-bordered table-stripped">
-                <thead>
-                    <tr>
-                        <th>
-                            Registration Number
-                        </th>
-                        <th>
-                            Full Name
-                        </th>
-                        <th align="center">
-                            Enter Grade
-                        </th>
-                    </tr> 
-                </thead>
-                <tbody>
-                    @foreach (CourseHasStudents chs in Model)
-                    {
-                        @if (c.idCourse == chs.idCourse && chs.grade < 0)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => chs.Students.registressionNumber)
-                                    
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => chs.Students.name) @Html.DisplayFor(modelItem => chs.Students.surname)
-                                </td>
-                                <td align="center">
-                                    <form asp-controller="Professors" asp-action="SubmitGrade" method="post">
-                                        <input type="number" min="0" max="10" name="gradeInput" />
-                                        <input type="hidden" name="regnum" value="@chs.registrationNumber" />
-                                        
-                                        <input type="submit" value="Submit Grade" />
-                                    </form>
-                                    
-                                </td>
-                            </tr>
-                        }
-                    }
+<section>
+    <div class="page">
+        <!--Section of the side navigation menu-->
+        <div class="sidenav">
+
+            <!--Section of image-->
+            <div class="profile_image">
+                <picture>
+                    <img src="@Url.Content("~/images/teacher_symbol.png")" alt="User" class="icons">
+                </picture>
+            </div>
+
+            <!--Section of menu's options-->
+            <div class="options">
+                <a asp-controller="Professors" asp-action="TeacherHomepage" asp-route-username="@ViewBag.Username">
+                    <img src="@Url.Content("~/images/home.png")" alt="User" class="icons">
+                    Homepage
+                </a>
+                <button class="dropdown-btn">
+                    <img src="@Url.Content("~/images/grade.png")" alt="User" class="icons">
+                    My Grading
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a asp-controller="Professors" asp-action="GradesList" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">Graded Courses</a>
+                    <a asp-controller="Professors" asp-action="EnterGrades" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/pending.png")" alt="User" class="icons">Submit grades</a>
+
+                </div>
+                <a asp-controller="Professors" asp-action="Profile" asp-route-username="@ViewBag.Username">
+                    <img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">
+                    Profile
+                </a>
+                <a class="logout" asp-controller="Home" asp-action="Login">
+                    <img src="@Url.Content("~/images/logout.png")" alt="User" class="icons">Logout
+                </a>
+            </div>
+
+        </div>
+        <!--END OF MENU-->
 
 
-                </tbody>
 
-            </table>
-            s.Add(c.idCourse);
+        <div class="main_content">
+
+            <div class="top">
+                <h2>My Courses</h2>
+
+            </div>
+
+            <div class="courses">
+                <div class="search">
+
+                    <form asp-controller="Professors" asp-action="EnterGrades" method="get">
+                        <div class="select">
+
+                            <select id="SemesterNum" name="SemesterNum">
+                                <option value="">All</option>
+                                <option value="1">Semester 1</option>
+                                <option value="2">Semester 2</option>
+                                <option value="3">Semester 3</option>
+                                <option value="4">Semester 4</option>
+                            </select>
+                            <input class="btn" type="image" src="~/images/search.png" value="" />
+                        </div>
+
+
+                        <div class="bar">
+                            <input class="input" type="text" name="SearchString" placeholder="Search a subject" />
+                            <input class="btn" type="image" src="~/images/search.png" value="" />
+                        </div>
+
+                    <input type="hidden" name="Username" value="@ViewBag.Username" />
+            </form>
+            </div>
+
+            @{
+                List<int> s = new List<int>();
+            }
+            @foreach (CourseHasStudents c in Model)
+            {
+                @if (c.Course.Professors.username == @ViewBag.Username && !s.Contains(c.idCourse))
+                {
+                    <div class="course">
+                            <div class="course_title">
+                                <h3>
+                                    @c.Course.courseTitle
+                                </h3>
+                            </div>
+                            <div class="course_info">
+                   
+                                <h4>
+                                    Semester @c.Course.courseSemester
+                                </h4>
+                                <table class="table table-bordered table-stripped">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Registration Number
+                                            </th>
+                                            <th>
+                                                Full Name
+                                            </th>
+                                            <th >
+                                                Enter Grade
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (CourseHasStudents chs in Model)
+                                        {
+                                            @if (c.idCourse == chs.idCourse && chs.grade < 0)
+                                            {
+                                                <tr class="row">
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => chs.Students.registressionNumber)
+
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => chs.Students.name) @Html.DisplayFor(modelItem => chs.Students.surname)
+                                                    </td>
+                                                    <td>
+                                                        <form asp-controller="Professors" asp-action="SubmitGrade" method="post">
+                                                            <input type="number" min="0" max="10" name="gradeInput" />
+                                                            <input type="hidden" name="regnum" value="@chs.registrationNumber" />
+
+                                                            <input type="submit" value="Submit Grade" />
+                                                        </form>
+
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+
+
+                                    </tbody>
+
+                                </table>
+                    </div>
+                    </div>
+                    s.Add(c.idCourse);
+                }
+
+                }
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
         }
+    </script>
+</section>
 
-        
-    }
-</div>
+
+

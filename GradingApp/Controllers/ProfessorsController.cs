@@ -16,7 +16,11 @@ namespace GradingApp.Controllers
         {
             return View();
         }
-
+        public IActionResult TeacherHomepage(string Username)
+        {
+            ViewBag.Username = Username;
+            return View("TeacherHomepage");
+        }
         public async Task<IActionResult> GradesList(string Username, string SemesterNum, string searchString)
         {
             ViewBag.Course = _db.Course.ToList();

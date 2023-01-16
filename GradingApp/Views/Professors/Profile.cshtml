@@ -4,7 +4,7 @@
 }
 @section Styles{
     <link rel="stylesheet" href="~/css/MenuStyle.css" />
-    <link rel="stylesheet" href="~/css/GradesSemesterStyle.css" />
+    <link rel="stylesheet" href="~/css/TeacherProfileStyle.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 }
 
@@ -46,58 +46,79 @@
         <!--MAIN CONTENT-->
 
         <div class="main_content">
+            <div class="top">
+                <h2>Profile Information</h2>
+            </div>
+
+            <div class="info">
+                <div class="profile">
+                    <div class="card_title">
+                        <h3>
+                            @ViewBag.Professor.name @ViewBag.Professor.surname's Card
+
+                        </h3>
+                    </div>
+                    <picture>
+                        <img src="@Url.Content("~/images/teacher_symbol.png")" alt="User" class="icons">
+                    </picture>
+                    <table>
+                        <tr>
+                            <td class="title">
+                                AFM
+                            </td>
+                            <td>
+                                @ViewBag.Professor.afm
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                Username
+                            </td>
+                            <td>
+                                @ViewBag.Professor.username
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                Password
+                            </td>
+                            <td>
+                                @ViewBag.Professor.Users.password
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                Name
+                            </td>
+                            <td>
+                                @ViewBag.Professor.name
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                Surname
+                            </td>
+                            <td>
+                                @ViewBag.Professor.surname
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">
+                                Department
+                            </td>
+                            <td>
+                                @ViewBag.Professor.department
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="image">
+                    <img src="@Url.Content("~/images/login.png")" alt="User" class="icons">
+
+                </div>
+
+            </div>
             
-            <h2>Hello @ViewBag.Professor.name @ViewBag.Professor.surname</h2>
-            <table>
-                <tr>
-                    <td>
-                        AFM
-                    </td>
-                    <td>
-                        @ViewBag.Professor.afm
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Username
-                    </td>
-                    <td>
-                        @ViewBag.Professor.username
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Password
-                    </td>
-                    <td>
-                        @ViewBag.Professor.Users.password
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Name
-                    </td>
-                    <td>
-                        @ViewBag.Professor.name
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Surname
-                    </td>
-                    <td>
-                        @ViewBag.Professor.surname
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Department
-                    </td>
-                    <td>
-                        @ViewBag.Professor.department
-                    </td>
-                </tr>
-            </table>
         </div>
         </div>
     <script>
