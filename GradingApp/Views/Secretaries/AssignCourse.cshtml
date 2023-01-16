@@ -24,7 +24,7 @@
             </div>
 
             <div class="options">
-                <a href="#">
+                <a asp-controller="Secretaries" asp-action="SecretaryHomepage" asp-route-username="@ViewBag.Username">
                     <img src="@Url.Content("~/images/home.png")" alt="User" class="icons">
                     Homepage
                 </a>
@@ -36,7 +36,7 @@
                 </button>
                 <div class="dropdown-container">
                     <a asp-controller="Secretaries" asp-action="Registration" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/register.png")" alt="User" class="icons">Register</a>
-                    <a href="#"><img src="@Url.Content("~/images/assign.png")" alt="User" class="icons">Assign Course</a>
+                    <a asp-controller="Secretaries" asp-action="AssignCourse" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/assign.png")" alt="User" class="icons">Assign Course</a>
                 </div>
                 <button class="dropdown-btn">
                     <img src="@Url.Content("~/images/teacher.png")" alt="User" class="icons">
@@ -45,7 +45,7 @@
                 </button>
                 <div class="dropdown-container">
                     <a asp-controller="Secretaries" asp-action="Registration" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/register.png")" alt="User" class="icons">Register</a>
-                    <a href="#"><img src="@Url.Content("~/images/assign.png")" alt="User" class="icons">Assign Course</a>
+                    <a asp-controller="Secretaries" asp-action="AssignCourse" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/assign.png")" alt="User" class="icons">Assign Course</a>
                 </div>
 
                 <button class="dropdown-btn">
@@ -59,7 +59,7 @@
 
                 </div>
 
-                <a href="#about">
+                <a hasp-controller="Secretaries" asp-action="Profile" asp-route-username="@ViewBag.Username">
                     <img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">
                     Profile
                 </a>

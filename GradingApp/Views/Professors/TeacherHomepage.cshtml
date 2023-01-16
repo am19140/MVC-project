@@ -24,7 +24,7 @@
 
             <!--Section of menu's options-->
             <div class="options">
-                <a href="#">
+                <a asp-controller="Professors" asp-action="TeacherHomepage" asp-route-username="@ViewBag.Username">
                     <img src="@Url.Content("~/images/home.png")" alt="User" class="icons">
                     Homepage
                 </a>
@@ -36,8 +36,12 @@
                 <div class="dropdown-container">
                     <a asp-controller="Professors" asp-action="GradesList" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">Graded Courses</a>
                     <a asp-controller="Professors" asp-action="EnterGrades" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/pending.png")" alt="User" class="icons">Submit grades</a>
+
                 </div>
-                <a asp-controller="Professors" asp-action="Profile" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">Profile</a>
+                <a asp-controller="Professors" asp-action="Profile" asp-route-username="@ViewBag.Username">
+                    <img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">
+                    Profile
+                </a>
                 <a class="logout" asp-controller="Home" asp-action="Login">
                     <img src="@Url.Content("~/images/logout.png")" alt="User" class="icons">Logout
                 </a>
@@ -83,7 +87,7 @@
                             Student's name
                         </div>
                         <div class="contains">
-                            <button class="redirct-btn">View my graded courses</button>
+                            <button class="redirct-btn"><a asp-controller="Professors" asp-action="GradesList" asp-route-username="@ViewBag.Username">View my graded courses</a></button>
                         </div>
                     </div>
                 </div>
@@ -98,7 +102,7 @@
                             <img src="@Url.Content("~/images/grades.png")" alt="User" class="icons">
                         </div>
                         <div class="contains">
-                            <button class="redirct-btn">View my courses</button>
+                            <button class="redirct-btn"><a asp-controller="Professors" asp-action="EnterGrades" asp-route-username="@ViewBag.Username">Grade some exams</a></button>
                         </div>
 
                     </div>

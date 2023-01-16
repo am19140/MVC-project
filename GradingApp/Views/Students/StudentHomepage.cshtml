@@ -25,7 +25,7 @@
 
             <!--Section of menu's options-->
             <div class="options">
-                <a href="#">
+                <a asp-controller="Students" asp-action="StudentHomepage" asp-route-username="@ViewBag.Username">
                     <img src="@Url.Content("~/images/home.png")" alt="User" class="icons">
                     Homepage</a>
                     <button class="dropdown-btn">
@@ -83,7 +83,7 @@
                             Professor's name
                         </div>
                         <div class="contains">
-                            <button class="redirct-btn">View my Card</button>
+                            <button class="redirct-btn"><a asp-controller="Students" asp-action="MyCard" asp-route-username="@ViewBag.Username">View My Card</a></button>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                             <img src="@Url.Content("~/images/statistics.png")" alt="User" class="icons">
                         </div>
                         <div class="contains">
-                            <button class="redirct-btn">View my grades per semester</button>
+                            <button class="redirct-btn"><a asp-controller="Students" asp-action="GradesSemester" asp-route-username="@ViewBag.Username">View my grades per semester</a></button>
                         </div>
                         
                     </div>
@@ -114,7 +114,7 @@
                             <img src="@Url.Content("~/images/final.png")" alt="User" class="icons">
                         </div>
                         <div class="contains">
-                            <button class="redirct-btn">View my final Grade</button>
+                            <button class="redirct-btn"><a asp-controller="Students" asp-action="MyCard" asp-route-username="@ViewBag.Username">View my final Grade</a></button>
                         </div>
                     </div>
                 </div>
@@ -146,37 +146,7 @@
 
 
 
-    <!--
-    <div class="page">
-        
-    <div class="navigation_bar">
-        <picture>
-            <img src="@Url.Content("~/images/student.png")" alt="User" class="icons">
 
-        </picture>
-        <div class="menu">
-            <div class="menu" id="bmenu">
-
-                <a class="link" href="#">Homepage</a>
-                <button class="dropdown">My Grades           <i class="fa fa-caret-down"></i></button>
-                <div class="sub-menu">
-                    <a class="link" asp-controller="Student" asp-route-username="@Model" asp-action="Upload">My card</a>
-                    <a class="link" asp-controller="Student" asp-route-username="@Model" asp-action="ThesisStatus">Per Semester</a>
-                    <a class="link" asp-controller="Student" asp-route-username="@Model" asp-action="ThesisStatus">Final Grade</a>
-
-                </div>
-                <a class="link" asp-controller="Home" asp-action="Login">Logout</a>
-            </div>
-
-        </div>
-    </div>
-    <div class="content">
-        <div class="container">
-        </div>
-    </div>
-    </div>
-    -->
- 
 
 
 

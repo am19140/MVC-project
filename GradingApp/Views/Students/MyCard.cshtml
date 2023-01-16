@@ -70,10 +70,7 @@
                     <a asp-controller="Students" asp-action="GradesSubject" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">Overview</a>
                 </div>
 
-                <a href="#about">
-                    <img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">
-                    Profile
-                </a>
+                <a asp-controller="Students" asp-action="Profile" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">Profile</a>
                 <a class="logout" asp-controller="Home" asp-action="Login">
                     <img src="@Url.Content("~/images/logout.png")" alt="User" class="icons">Logout
                 </a>
@@ -84,11 +81,17 @@
 
         <!--MAIN CONTENT-->
         <div class="main_content">
+            <div class="top">
+                <h2>My Card</h2>
 
+            </div>
           
             <!--SECTION OF STATISTICS-->
             <div class="statistics">
-                <h2>Your academic overview</h2>
+                <div class="stat_title">
+                    <h3>Your academic overview</h3>
+
+                </div>
                 <div class="container">
                     <div class="left">
                         <table class="table table-bordered table-stripped">
@@ -125,7 +128,9 @@
 
             <!--SECTION OF GRADES-->
             <div class="grades">
-                <h2>Courses</h2>
+                <div class="grades_title">
+                    <h3>Courses</h3>
+                </div>
 
                 <table class="table table-bordered table-stripped" >
                     <thead>

@@ -24,7 +24,7 @@
             </div>
 
             <div class="options">
-                <a href="#">
+                <a asp-controller="Secretaries" asp-action="SecretaryHomepage" asp-route-username="@ViewBag.Username">
                     <img src="@Url.Content("~/images/home.png")" alt="User" class="icons">
                     Homepage
                 </a>
@@ -59,7 +59,7 @@
 
                 </div>
 
-                <a href="#about">
+                <a hasp-controller="Secretaries" asp-action="Profile" asp-route-username="@ViewBag.Username">
                     <img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">
                     Profile
                 </a>
@@ -71,49 +71,56 @@
         <!--END OF MENU-->
 
         <div class="main_content">
+            <div class="top">
+                <h2>Overview</h2>
 
+            </div>
             <div class="courses">
-                <h2 >Available Courses  </h2>
-                <table class="table table-bordered table-stripped" >
-                    <thead>
-                        <tr>
-                            <th>Subject</th>
-                            <th>Semester</th>
-                            <th>Professor</th>
-                            <th>Number of Registered students </th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div class="container">
 
-                        @foreach (Course c in @ViewBag.Course)
-                        {
-                            int count = 0;
-                            @foreach (CourseHasStudents chs in @ViewBag.CourseHasStudents)
-                            {
-
-                                @if (c.idCourse == chs.idCourse)
-                                {
-                                    count++;
-                                }
-                            }
-                            <tr class="row">
-                                <td class="title">
-                                    @c.courseTitle
-                                </td>
-                                <td align="center">
-                                    @c.courseSemester
-                                </td>
-                                <td align="center">
-                                    @c.Professors.surname @c.Professors.name
-                                </td>
-                                <td align="center">
-                                    @count
-                                </td>
+                    <h2>Available Courses  </h2>
+                    <table class="table table-bordered table-stripped">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Semester</th>
+                                <th>Professor</th>
+                                <th>Number of Registered students </th>
                             </tr>
+                        </thead>
+                        <tbody>
 
-                        }
-                    </tbody>
-                </table>
+                            @foreach (Course c in @ViewBag.Course)
+                            {
+                                int count = 0;
+                                @foreach (CourseHasStudents chs in @ViewBag.CourseHasStudents)
+                                {
+
+                                    @if (c.idCourse == chs.idCourse)
+                                    {
+                                        count++;
+                                    }
+                                }
+                                <tr class="row">
+                                    <td class="title">
+                                        @c.courseTitle
+                                    </td>
+                                    <td align="center">
+                                        @c.courseSemester
+                                    </td>
+                                    <td align="center">
+                                        @c.Professors.surname @c.Professors.name
+                                    </td>
+                                    <td align="center">
+                                        @count
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                
             </div>
           
         </div>

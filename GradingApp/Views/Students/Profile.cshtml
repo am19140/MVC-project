@@ -4,7 +4,7 @@
 }
 @section Styles{
     <link rel="stylesheet" href="~/css/MenuStyle.css" />
-    <link rel="stylesheet" href="~/css/GradesSemesterStyle.css" />
+    <link rel="stylesheet" href="~/css/TeacherProfileStyle.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 }
 
@@ -37,10 +37,7 @@
                     <a asp-controller="Students" asp-action="GradesSubject" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">Overview</a>
                 </div>
 
-                <a href="#about">
-                    <img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">
-                    Profile
-                </a>
+                <a asp-controller="Students" asp-action="Profile" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">Profile</a>
                 <a class="logout" asp-controller="Home" asp-action="Login">
                     <img src="@Url.Content("~/images/logout.png")" alt="User" class="icons">Logout
                 </a>
@@ -51,11 +48,25 @@
         <!--MAIN CONTENT-->
 
         <div class="main_content">
-            
-            <h2>Hello @ViewBag.Student.name @ViewBag.Student.surname</h2>
+            <div class="top">
+                <h2>Profile Information</h2>
+            </div>
+
+            <div class="info">
+                <div class="profile">
+                    <div class="card_title">
+                        <h3>
+                            @ViewBag.Student.name @ViewBag.Student.surname's Card
+
+                        </h3>
+                    </div>
+                    <picture>
+                        <img src="@Url.Content("~/images/student_symbol.png")" alt="User" class="icons">
+                    </picture>
+
             <table>
                 <tr>
-                    <td>
+                            <td class="title">
                         Registration Number
                     </td>
                     <td>
@@ -63,7 +74,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                            <td class="title">
                         Username
                     </td>
                     <td>
@@ -71,7 +82,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                            <td class="title">
                         Password
                     </td>
                     <td>
@@ -79,7 +90,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                            <td class="title">
                         Name
                     </td>
                     <td>
@@ -87,7 +98,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                            <td class="title">
                         Surname
                     </td>
                     <td>
@@ -95,7 +106,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                            <td class="title">
                         Department
                     </td>
                     <td>
@@ -103,6 +114,13 @@
                     </td>
                 </tr>
             </table>
+        </div>
+                <div class="image">
+                    <img src="@Url.Content("~/images/login.png")" alt="User" class="icons">
+
+                </div>
+</div>
+</div>
         </div>
     <script>
         var dropdown = document.getElementsByClassName("dropdown-btn");

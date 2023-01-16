@@ -37,10 +37,7 @@
                     <a asp-controller="Students" asp-action="GradesSubject" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/card.png")" alt="User" class="icons">Overview</a>
                 </div>
 
-                <a href="#about">
-                    <img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">
-                    Profile
-                </a>
+                <a asp-controller="Students" asp-action="Profile" asp-route-username="@ViewBag.Username"><img src="@Url.Content("~/images/user_green.png")" alt="User" class="icons">Profile</a>
                 <a class="logout" asp-controller="Home" asp-action="Login">
                     <img src="@Url.Content("~/images/logout.png")" alt="User" class="icons">Logout
                 </a>
@@ -49,6 +46,10 @@
         </div>
         <!--END OF SIDE MENU-->
         <div class="main_content">
+            <div class="top">
+                <h2>Overview</h2>
+
+            </div>
             <div class="search">
 
                 <form asp-controller="Students" asp-action="GradesSubject" method="get">
@@ -64,8 +65,10 @@
                 </form>
             </div>
             <div class="courses">
+                <div class="courses_title">
+                    <h3>All my Courses</h3>
 
-                <h2>Courses</h2>
+                </div>
 
                 <table class="table table-bordered table-stripped">
                     <thead>
