@@ -106,7 +106,7 @@
                                     <thead>
                                         <tr>
                                             <th>
-                                                Registration Number
+                                                <p>Registration Number</p>
                                             </th>
                                             <th>
                                                 Full Name
@@ -127,18 +127,18 @@
                                             {
                                                 <tr class="row">
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => chs.Students.registressionNumber)
+                                                        <p>@Html.DisplayFor(modelItem => chs.Students.registressionNumber)</p>
 
                                                     </td>
                                                     <td>
                                                         @Html.DisplayFor(modelItem => chs.Students.name) @Html.DisplayFor(modelItem => chs.Students.surname)
                                                     </td>
                                                     <td>
-                                                        <form asp-controller="Professors" asp-action="SubmitGrade" asp-route-username="@ViewBag.Username" method="post">
-                                                            <input type="number" min="0" max="10" name="gradeInput" />
+                                                        <form asp-controller="Professors" asp-action="SubmitGrade" asp-route-username="@ViewBag.Username" method="post" class="entergrade">
+                                                            <input type="number" min="0" max="10" name="gradeInput" class="grade_input"/>
                                                             <input type="hidden" name="regnum" value="@chs.registrationNumber" />
                                                             <input type="hidden" name="cid" value="@chs.idCourse" />
-                                                            <input type="submit" value="Submit Grade" />
+                                                            <input type="submit" value="Submit" class="btn" />
                                                         </form>
 
                                                     </td>
@@ -151,7 +151,9 @@
                                         @if (counter == 0)
                                         {
                                              <tr class="row">
-                                                <td>No pending grades</td>
+                                                <td class="empty">
+                                                    <img src="@Url.Content("~/images/not_found.png")" alt="User" class="icons">No pending grades
+                                                </td>
                                              </tr>
                                         }
 

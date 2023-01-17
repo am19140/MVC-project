@@ -43,7 +43,7 @@ thead {
     height: 60px;
     text-align: left;
     color: white;
-    background-color: #f3df66;
+    background-color: rgba(244, 223, 102, 0.8);
     border-radius: 25px;
     width: 80%;
 }

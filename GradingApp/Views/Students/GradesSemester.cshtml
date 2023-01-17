@@ -109,14 +109,14 @@
                                 </tr>
                                 <tr class="row">
                                     <td class="title">Grade Point Average:</td>
-                                    <td class="results">@avg</td>
+                                    <td >@avg</td>
                                 </tr>
                             </tbody>
                         </table>
 
                     </div>
                     <div class="right">
-                        <h1>@avg.0</h1>
+                        <h1>@avg</h1>
                     </div>
                 </div>
 
@@ -144,7 +144,7 @@
                 <table class="table table-bordered table-stripped">
                     <thead>
                         <tr class="row">
-                            <th>Subject</th>
+                            <th><p>Subject</p></th>
                             <th>Semester</th>
                             <th>Professor</th>
                             <th>Grade</th>
@@ -159,7 +159,7 @@
                             {
                                 <tr class="row">
                                     <td class="title">
-                                        @Html.DisplayFor(modelItem => chs.Course.courseTitle)
+                                        <p>@Html.DisplayFor(modelItem => chs.Course.courseTitle)</p>
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => chs.Course.courseSemester)

@@ -6,6 +6,8 @@
 @section Styles{
             <link rel="stylesheet" href="~/css/MenuStyle.css" />
             <link rel="stylesheet" href="~/css/AssignCourseStyle.css" />
+            <script type="text/javascript" src="~/js/AssignmentSuccessScript.js">    </script>
+
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 }
 <section>
@@ -100,7 +102,7 @@
                             <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                         </div>
 
-                        <input type="submit" value="Add" class="btn btn-primary" />
+                        <input type="submit" value="Add" class="btn btn-primary" onclick="success_student()" />
 
                     </form>
                 </div>
@@ -140,7 +142,7 @@
                             <span class="text-danger"></span> <!--Used if the user has entered wrong details on this input-->
                         </div>
 
-                        <input type="submit" value="Add" class="btn btn-primary" />
+                        <input type="submit" value="Add" class="btn btn-primary" onclick="success_professor()" />
 
                     </form>
                 </div>
