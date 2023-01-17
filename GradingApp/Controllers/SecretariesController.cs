@@ -79,7 +79,7 @@ namespace GradingApp.Controllers
                 
             }
             _db.SaveChanges();
-            return View();
+            return View("Registration");
         }
         public IActionResult RegisterCourse()
         {
@@ -89,28 +89,36 @@ namespace GradingApp.Controllers
             c.courseSemester = Int32.Parse(Request.Form["semester"].ToString());
             _db.Course.Add(c);
             _db.SaveChanges();
-            return View();
+            return View("Registration");
         }
 
-        public IActionResult AssignProfessor()
+        public IActionResult AssignProfessor(string username)
         {
+            ViewBag.Username = username;
+            ViewBag.Professors = _db.Professors.ToList();
             int x = Int32.Parse(Request.Form["course"].ToString());
             Course c = _db.Course.ToList().First(c => c.idCourse == x);
             c.afm = Int32.Parse(Request.Form["professor"].ToString());
             _db.Course.Update(c);
             _db.SaveChanges();
-            return View();
+            var crs = from i in _db.Course
+                      select i;
+            return View("AssignCourse", crs.ToList());
         }
 
-        public IActionResult AssignStudent()
+        public IActionResult AssignStudent(string username)
         {
+            ViewBag.Username = username;
+            ViewBag.Professors = _db.Professors.ToList();
             CourseHasStudents chs = new CourseHasStudents();
             chs.idCourse = Int32.Parse(Request.Form["course_student"].ToString());
             chs.registrationNumber = Int32.Parse(Request.Form["student"].ToString());
             chs.grade = -1;
             _db.CourseHasStudents.Add(chs);
             _db.SaveChanges();
-            return View();
+            var crs = from c in _db.Course
+                      select c;
+            return View("AssignCourse", crs.ToList());
         }
 
         public IActionResult Profile(string Username)

@@ -79,14 +79,40 @@ namespace GradingApp.Controllers
             return View(await crs.ToListAsync());
         }
 
-        public IActionResult SubmitGrade()
+        public IActionResult SubmitGrade(string Username, string SemesterNum, string searchString)
         {
+            ViewBag.Username = Username;
+            ViewBag.Course = _db.Course.ToList();
+            ViewBag.Students = _db.Students.ToList();
+            ViewBag.Professors = _db.Professors.ToList();
+            ViewBag.CourseHasStudents = _db.CourseHasStudents.ToList();
+
             int x = Int32.Parse(Request.Form["regnum"].ToString());
-            CourseHasStudents chs = _db.CourseHasStudents.ToList().First(chs => chs.registrationNumber == x);
+            int y = Int32.Parse(Request.Form["cid"].ToString());
+            CourseHasStudents chs = _db.CourseHasStudents.ToList().First(chs => chs.registrationNumber == x && chs.idCourse == y);
             chs.grade = Int32.Parse(Request.Form["gradeInput"].ToString());
             _db.CourseHasStudents.Update(chs);
             _db.SaveChanges();
-            return View();
+            
+            var crs = from c in _db.CourseHasStudents
+                      select c;
+
+            if (!String.IsNullOrEmpty(SemesterNum))
+            {
+                crs = crs.Where(s => s.Course.courseSemester.ToString() == SemesterNum);
+            }
+            else
+            {
+                crs = from c in _db.CourseHasStudents
+                      select c;
+            }
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                crs = crs.Where(s => s.Course.courseTitle!.Contains(searchString));
+            }
+
+            return View("EnterGrades", crs.ToList());
         }
 
         public IActionResult Profile(string Username)

@@ -70,7 +70,7 @@
         </div>
         <!--END OF MENU-->
 
-
+        <input type="hidden" name="Username" value="@ViewBag.Username" />
 
         <div class="main_content">
             <!--LEFT SECTION OF CONTAINER-->
@@ -78,7 +78,7 @@
                 <!--UPPER FORM-->
                 <div class="form">
                     <h2>Student Assigning  </h2>
-                    <form asp-controller="Secretaries" asp-action="AssignStudent" asp-route-proffesorName="@ViewBag.Username">
+                    <form asp-controller="Secretaries" asp-action="AssignStudent" asp-route-username="@ViewBag.Username">
                         <h4>Assign a student to one of the courses available!</h4>
 
                         <!--Ragistration number-->
@@ -108,7 +108,7 @@
                 <!--DOWN FORM-->
                 <div class="form">
                     <h2>Professor Assigning  </h2>
-                    <form asp-controller="Secretaries" asp-action="AssignProfessor" asp-route-proffesorName="@ViewBag.Username">
+                    <form asp-controller="Secretaries" asp-action="AssignProfessor" asp-route-username="@ViewBag.Username">
                         <h4>Assign a professor to one of the courses available!</h4>
 
                         <!--Professor selection-->

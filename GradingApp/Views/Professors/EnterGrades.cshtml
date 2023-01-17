@@ -49,7 +49,7 @@
         </div>
         <!--END OF MENU-->
 
-
+        <input type="hidden" name="Username" value="@ViewBag.Username" />
 
         <div class="main_content">
 
@@ -130,10 +130,10 @@
                                                         @Html.DisplayFor(modelItem => chs.Students.name) @Html.DisplayFor(modelItem => chs.Students.surname)
                                                     </td>
                                                     <td>
-                                                        <form asp-controller="Professors" asp-action="SubmitGrade" method="post">
+                                                        <form asp-controller="Professors" asp-action="SubmitGrade" asp-route-username="@ViewBag.Username" method="post">
                                                             <input type="number" min="0" max="10" name="gradeInput" />
                                                             <input type="hidden" name="regnum" value="@chs.registrationNumber" />
-
+                                                            <input type="hidden" name="cid" value="@chs.idCourse" />
                                                             <input type="submit" value="Submit Grade" />
                                                         </form>
 
