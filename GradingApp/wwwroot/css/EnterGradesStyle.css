@@ -103,7 +103,7 @@ h4 {
     margin-bottom: 20px;
     margin: 1%;
     width: 85%;
-    height: 400px;
+    height: fit-content;
 }
 form {
     width: 100%;

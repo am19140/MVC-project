@@ -166,6 +166,10 @@
                                         {
                                             <img src="@Url.Content("~/images/tick_green.png")" alt="User" class="icons">
                                         }
+                                        @if (@chs.grade<5 &&  chs.grade>0){
+                                            <img src="@Url.Content("~/images/x.png")" alt="User" class="icons">
+                                        }
+                                        
                                     </td>
                                 </tr>
 

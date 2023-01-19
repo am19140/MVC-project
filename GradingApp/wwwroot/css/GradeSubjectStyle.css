@@ -47,6 +47,9 @@ thead {
     border-radius: 25px;
     width: 80%;
 }
+.courses tr p {
+    padding-left: 0.5%;
+}
 td {
     height: 40px;
 }
